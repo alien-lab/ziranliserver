@@ -1,0 +1,86 @@
+<div>
+    <h2 data-translate="ziranliserverApp.artworkOrder.home.title">Artwork Orders</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="artwork-order.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="ziranliserverApp.artworkOrder.home.createLabel">
+                        Create new Artwork Order
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="amount"><span data-translate="ziranliserverApp.artworkOrder.amount">Amount</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="payPrice"><span data-translate="ziranliserverApp.artworkOrder.payPrice">Pay Price</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="payStatus"><span data-translate="ziranliserverApp.artworkOrder.payStatus">Pay Status</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="wechatOrderno"><span data-translate="ziranliserverApp.artworkOrder.wechatOrderno">Wechat Orderno</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="orderTime"><span data-translate="ziranliserverApp.artworkOrder.orderTime">Order Time</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="payTime"><span data-translate="ziranliserverApp.artworkOrder.payTime">Pay Time</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="address"><span data-translate="ziranliserverApp.artworkOrder.address">Address</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="phone"><span data-translate="ziranliserverApp.artworkOrder.phone">Phone</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="contact"><span data-translate="ziranliserverApp.artworkOrder.contact">Contact</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="orderFlag"><span data-translate="ziranliserverApp.artworkOrder.orderFlag">Order Flag</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="artwork.id"><span data-translate="ziranliserverApp.artworkOrder.artwork">Artwork</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="user.id"><span data-translate="ziranliserverApp.artworkOrder.user">User</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="artworkOrder in vm.artworkOrders track by artworkOrder.id">
+                    <td><a ui-sref="artwork-order-detail({id:artworkOrder.id})">{{artworkOrder.id}}</a></td>
+                    <td>{{artworkOrder.amount}}</td>
+                    <td>{{artworkOrder.payPrice}}</td>
+                    <td>{{artworkOrder.payStatus}}</td>
+                    <td>{{artworkOrder.wechatOrderno}}</td>
+                    <td>{{artworkOrder.orderTime | date:'medium'}}</td>
+                    <td>{{artworkOrder.payTime | date:'medium'}}</td>
+                    <td>{{artworkOrder.address}}</td>
+                    <td>{{artworkOrder.phone}}</td>
+                    <td>{{artworkOrder.contact}}</td>
+                    <td>{{artworkOrder.orderFlag}}</td>
+                    <td>
+                        <a ui-sref="artwork-detail({id:artworkOrder.artwork.id})">{{artworkOrder.artwork.id}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="wechat-user-detail({id:artworkOrder.user.id})">{{artworkOrder.user.id}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="artwork-order-detail({id:artworkOrder.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="artwork-order.edit({id:artworkOrder.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="artwork-order.delete({id:artworkOrder.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

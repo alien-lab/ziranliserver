@@ -1,0 +1,59 @@
+
+<div>
+    <h2><span data-translate="ziranliserverApp.course.detail.title">Course</span> {{vm.course.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="ziranliserverApp.course.name">Name</span></dt>
+        <dd>
+            <span>{{vm.course.name}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.course.memo">Memo</span></dt>
+        <dd>
+            <span>{{vm.course.memo}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.course.coverImage">Cover Image</span></dt>
+        <dd>
+            <span>{{vm.course.coverImage}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.course.price">Price</span></dt>
+        <dd>
+            <span>{{vm.course.price}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.course.price2">Price 2</span></dt>
+        <dd>
+            <span>{{vm.course.price2}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.course.courseTime">Course Time</span></dt>
+        <dd>
+            <span>{{vm.course.courseTime | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.course.createTime">Create Time</span></dt>
+        <dd>
+            <span>{{vm.course.createTime | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.course.status">Status</span></dt>
+        <dd>
+            <span>{{vm.course.status}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.course.qrCode">Qr Code</span></dt>
+        <dd>
+            <span>{{vm.course.qrCode}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.course.courseType">Course Type</span></dt>
+        <dd>
+            <a ui-sref="course-type-detail({id:vm.course.courseType.id})">{{vm.course.courseType.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="course-detail.edit({id:vm.course.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

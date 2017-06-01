@@ -1,0 +1,48 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "user",
+            "otherEntityName": "wechatUser",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "course",
+            "otherEntityName": "course",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "payPrice",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "payTime",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "isShare",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "payStatus",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "wechatOrderno",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "orderTime",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20170601095254",
+    "entityTableName": "course_order",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

@@ -1,0 +1,82 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myCourseOrderLabel" data-translate="ziranliserverApp.courseOrder.home.createOrEditLabel">Create or edit a Course Order</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.courseOrder.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.courseOrder.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="ziranliserverApp.courseOrder.payPrice" for="field_payPrice">Pay Price</label>
+            <input type="number" class="form-control" name="payPrice" id="field_payPrice"
+                    ng-model="vm.courseOrder.payPrice"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="ziranliserverApp.courseOrder.payTime" for="field_payTime">Pay Time</label>
+                <div class="input-group">
+                    <input id="field_payTime" type="text" class="form-control" name="payTime" datetime-picker="{{dateformat}}" ng-model="vm.courseOrder.payTime" is-open="vm.datePickerOpenStatus.payTime"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('payTime')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="ziranliserverApp.courseOrder.isShare" for="field_isShare">Is Share</label>
+            <input type="text" class="form-control" name="isShare" id="field_isShare"
+                    ng-model="vm.courseOrder.isShare"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="ziranliserverApp.courseOrder.payStatus" for="field_payStatus">Pay Status</label>
+            <input type="text" class="form-control" name="payStatus" id="field_payStatus"
+                    ng-model="vm.courseOrder.payStatus"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="ziranliserverApp.courseOrder.wechatOrderno" for="field_wechatOrderno">Wechat Orderno</label>
+            <input type="text" class="form-control" name="wechatOrderno" id="field_wechatOrderno"
+                    ng-model="vm.courseOrder.wechatOrderno"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="ziranliserverApp.courseOrder.orderTime" for="field_orderTime">Order Time</label>
+                <div class="input-group">
+                    <input id="field_orderTime" type="text" class="form-control" name="orderTime" datetime-picker="{{dateformat}}" ng-model="vm.courseOrder.orderTime" is-open="vm.datePickerOpenStatus.orderTime"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('orderTime')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label data-translate="ziranliserverApp.courseOrder.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" ng-model="vm.courseOrder.user" ng-options="wechatUser as wechatUser.id for wechatUser in vm.wechatusers track by wechatUser.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="ziranliserverApp.courseOrder.course" for="field_course">Course</label>
+            <select class="form-control" id="field_course" name="course" ng-model="vm.courseOrder.course" ng-options="course as course.id for course in vm.courses track by course.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

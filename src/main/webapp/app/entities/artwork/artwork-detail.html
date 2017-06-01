@@ -1,0 +1,59 @@
+
+<div>
+    <h2><span data-translate="ziranliserverApp.artwork.detail.title">Artwork</span> {{vm.artwork.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="ziranliserverApp.artwork.name">Name</span></dt>
+        <dd>
+            <span>{{vm.artwork.name}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.artwork.year">Year</span></dt>
+        <dd>
+            <span>{{vm.artwork.year}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.artwork.author">Author</span></dt>
+        <dd>
+            <span>{{vm.artwork.author}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.artwork.amount">Amount</span></dt>
+        <dd>
+            <span>{{vm.artwork.amount}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.artwork.price">Price</span></dt>
+        <dd>
+            <span>{{vm.artwork.price}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.artwork.memo">Memo</span></dt>
+        <dd>
+            <span>{{vm.artwork.memo}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.artwork.coverImage">Cover Image</span></dt>
+        <dd>
+            <span>{{vm.artwork.coverImage}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.artwork.status">Status</span></dt>
+        <dd>
+            <span>{{vm.artwork.status}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.artwork.tags">Tags</span></dt>
+        <dd>
+            <span>{{vm.artwork.tags}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.artwork.qrCode">Qr Code</span></dt>
+        <dd>
+            <span>{{vm.artwork.qrCode}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="artwork-detail.edit({id:vm.artwork.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

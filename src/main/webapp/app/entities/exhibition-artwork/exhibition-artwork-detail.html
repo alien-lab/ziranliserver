@@ -1,0 +1,39 @@
+
+<div>
+    <h2><span data-translate="ziranliserverApp.exhibitionArtwork.detail.title">Exhibition Artwork</span> {{vm.exhibitionArtwork.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="ziranliserverApp.exhibitionArtwork.amount">Amount</span></dt>
+        <dd>
+            <span>{{vm.exhibitionArtwork.amount}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.exhibitionArtwork.price">Price</span></dt>
+        <dd>
+            <span>{{vm.exhibitionArtwork.price}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.exhibitionArtwork.status">Status</span></dt>
+        <dd>
+            <span>{{vm.exhibitionArtwork.status}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.exhibitionArtwork.exhibition">Exhibition</span></dt>
+        <dd>
+            <a ui-sref="exhibition-detail({id:vm.exhibitionArtwork.exhibition.id})">{{vm.exhibitionArtwork.exhibition.id}}</a>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.exhibitionArtwork.artwork">Artwork</span></dt>
+        <dd>
+            <a ui-sref="artwork-detail({id:vm.exhibitionArtwork.artwork.id})">{{vm.exhibitionArtwork.artwork.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="exhibition-artwork-detail.edit({id:vm.exhibitionArtwork.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

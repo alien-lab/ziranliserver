@@ -1,0 +1,32 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "user",
+            "otherEntityName": "wechatUser",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "exhibiton",
+            "otherEntityName": "exhibition",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "joinTime",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "signTime",
+            "fieldType": "ZonedDateTime"
+        }
+    ],
+    "changelogDate": "20170601095253",
+    "entityTableName": "exhibition_name_list",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

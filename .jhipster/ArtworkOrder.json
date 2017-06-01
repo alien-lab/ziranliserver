@@ -1,0 +1,64 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "artwork",
+            "otherEntityName": "artwork",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "user",
+            "otherEntityName": "wechatUser",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "amount",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "payPrice",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "payStatus",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "wechatOrderno",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "orderTime",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "payTime",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "address",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "phone",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "contact",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "orderFlag",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170601095252",
+    "entityTableName": "artwork_order",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

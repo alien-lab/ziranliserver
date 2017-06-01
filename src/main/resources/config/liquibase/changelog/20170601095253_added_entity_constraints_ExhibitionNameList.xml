@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity ExhibitionNameList.
+    -->
+    <changeSet id="20170601095253-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="exhibition_name_list"
+                                 constraintName="fk_exhibition_name_list_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="wechat_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="exhibiton_id"
+                                 baseTableName="exhibition_name_list"
+                                 constraintName="fk_exhibition_name_list_exhibiton_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="exhibition"/>
+
+    </changeSet>
+</databaseChangeLog>

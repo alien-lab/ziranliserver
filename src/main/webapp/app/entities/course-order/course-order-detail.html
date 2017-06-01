@@ -1,0 +1,51 @@
+
+<div>
+    <h2><span data-translate="ziranliserverApp.courseOrder.detail.title">Course Order</span> {{vm.courseOrder.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="ziranliserverApp.courseOrder.payPrice">Pay Price</span></dt>
+        <dd>
+            <span>{{vm.courseOrder.payPrice}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.courseOrder.payTime">Pay Time</span></dt>
+        <dd>
+            <span>{{vm.courseOrder.payTime | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.courseOrder.isShare">Is Share</span></dt>
+        <dd>
+            <span>{{vm.courseOrder.isShare}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.courseOrder.payStatus">Pay Status</span></dt>
+        <dd>
+            <span>{{vm.courseOrder.payStatus}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.courseOrder.wechatOrderno">Wechat Orderno</span></dt>
+        <dd>
+            <span>{{vm.courseOrder.wechatOrderno}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.courseOrder.orderTime">Order Time</span></dt>
+        <dd>
+            <span>{{vm.courseOrder.orderTime | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.courseOrder.user">User</span></dt>
+        <dd>
+            <a ui-sref="wechat-user-detail({id:vm.courseOrder.user.id})">{{vm.courseOrder.user.id}}</a>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.courseOrder.course">Course</span></dt>
+        <dd>
+            <a ui-sref="course-detail({id:vm.courseOrder.course.id})">{{vm.courseOrder.course.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="course-order-detail.edit({id:vm.courseOrder.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

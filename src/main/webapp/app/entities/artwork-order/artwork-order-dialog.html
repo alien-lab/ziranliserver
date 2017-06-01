@@ -1,0 +1,106 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myArtworkOrderLabel" data-translate="ziranliserverApp.artworkOrder.home.createOrEditLabel">Create or edit a Artwork Order</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.artworkOrder.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.artworkOrder.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="ziranliserverApp.artworkOrder.amount" for="field_amount">Amount</label>
+            <input type="number" class="form-control" name="amount" id="field_amount"
+                    ng-model="vm.artworkOrder.amount"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="ziranliserverApp.artworkOrder.payPrice" for="field_payPrice">Pay Price</label>
+            <input type="number" class="form-control" name="payPrice" id="field_payPrice"
+                    ng-model="vm.artworkOrder.payPrice"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="ziranliserverApp.artworkOrder.payStatus" for="field_payStatus">Pay Status</label>
+            <input type="text" class="form-control" name="payStatus" id="field_payStatus"
+                    ng-model="vm.artworkOrder.payStatus"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="ziranliserverApp.artworkOrder.wechatOrderno" for="field_wechatOrderno">Wechat Orderno</label>
+            <input type="text" class="form-control" name="wechatOrderno" id="field_wechatOrderno"
+                    ng-model="vm.artworkOrder.wechatOrderno"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="ziranliserverApp.artworkOrder.orderTime" for="field_orderTime">Order Time</label>
+                <div class="input-group">
+                    <input id="field_orderTime" type="text" class="form-control" name="orderTime" datetime-picker="{{dateformat}}" ng-model="vm.artworkOrder.orderTime" is-open="vm.datePickerOpenStatus.orderTime"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('orderTime')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="ziranliserverApp.artworkOrder.payTime" for="field_payTime">Pay Time</label>
+                <div class="input-group">
+                    <input id="field_payTime" type="text" class="form-control" name="payTime" datetime-picker="{{dateformat}}" ng-model="vm.artworkOrder.payTime" is-open="vm.datePickerOpenStatus.payTime"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('payTime')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="ziranliserverApp.artworkOrder.address" for="field_address">Address</label>
+            <input type="text" class="form-control" name="address" id="field_address"
+                    ng-model="vm.artworkOrder.address"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="ziranliserverApp.artworkOrder.phone" for="field_phone">Phone</label>
+            <input type="text" class="form-control" name="phone" id="field_phone"
+                    ng-model="vm.artworkOrder.phone"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="ziranliserverApp.artworkOrder.contact" for="field_contact">Contact</label>
+            <input type="text" class="form-control" name="contact" id="field_contact"
+                    ng-model="vm.artworkOrder.contact"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="ziranliserverApp.artworkOrder.orderFlag" for="field_orderFlag">Order Flag</label>
+            <input type="text" class="form-control" name="orderFlag" id="field_orderFlag"
+                    ng-model="vm.artworkOrder.orderFlag"
+                    />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="ziranliserverApp.artworkOrder.artwork" for="field_artwork">Artwork</label>
+            <select class="form-control" id="field_artwork" name="artwork" ng-model="vm.artworkOrder.artwork" ng-options="artwork as artwork.id for artwork in vm.artworks track by artwork.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="ziranliserverApp.artworkOrder.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" ng-model="vm.artworkOrder.user" ng-options="wechatUser as wechatUser.id for wechatUser in vm.wechatusers track by wechatUser.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

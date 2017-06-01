@@ -1,0 +1,40 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "startDate",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "endDate",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "timeDesc",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "memo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "coverImage",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "qrCode",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170601095248",
+    "javadoc": "not an ignored comment",
+    "entityTableName": "exhibition",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

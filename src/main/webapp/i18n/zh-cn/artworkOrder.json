@@ -1,0 +1,32 @@
+{
+    "ziranliserverApp": {
+        "artworkOrder" : {
+            "home": {
+                "title": "Artwork Orders",
+                "createLabel": "Create a new Artwork Order",
+                "createOrEditLabel": "Create or edit a Artwork Order"
+            },
+            "created": "A new Artwork Order is created with identifier {{ param }}",
+            "updated": "A Artwork Order is updated with identifier {{ param }}",
+            "deleted": "A Artwork Order is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Artwork Order {{ id }}?"
+            },
+            "detail": {
+                "title": "Artwork Order"
+            },
+            "amount": "Amount",
+            "payPrice": "Pay Price",
+            "payStatus": "Pay Status",
+            "wechatOrderno": "Wechat Orderno",
+            "orderTime": "Order Time",
+            "payTime": "Pay Time",
+            "address": "Address",
+            "phone": "Phone",
+            "contact": "Contact",
+            "orderFlag": "Order Flag",
+            "artwork": "Artwork",
+            "user": "User"
+        }
+    }
+}

@@ -1,0 +1,25 @@
+{
+    "ziranliserverApp": {
+        "shareLog" : {
+            "home": {
+                "title": "Share Logs",
+                "createLabel": "Create a new Share Log",
+                "createOrEditLabel": "Create or edit a Share Log"
+            },
+            "created": "A new Share Log is created with identifier {{ param }}",
+            "updated": "A Share Log is updated with identifier {{ param }}",
+            "deleted": "A Share Log is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Share Log {{ id }}?"
+            },
+            "detail": {
+                "title": "Share Log"
+            },
+            "shareType": "Share Type",
+            "shareTime": "Share Time",
+            "shareContentKey": "Share Content Key",
+            "shareLink": "Share Link",
+            "user": "User"
+        }
+    }
+}

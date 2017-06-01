@@ -1,0 +1,51 @@
+
+<div>
+    <h2><span data-translate="ziranliserverApp.wechatUser.detail.title">Wechat User</span> {{vm.wechatUser.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="ziranliserverApp.wechatUser.openId">Open Id</span></dt>
+        <dd>
+            <span>{{vm.wechatUser.openId}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.wechatUser.nickName">Nick Name</span></dt>
+        <dd>
+            <span>{{vm.wechatUser.nickName}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.wechatUser.icon">Icon</span></dt>
+        <dd>
+            <span>{{vm.wechatUser.icon}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.wechatUser.area">Area</span></dt>
+        <dd>
+            <span>{{vm.wechatUser.area}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.wechatUser.name">Name</span></dt>
+        <dd>
+            <span>{{vm.wechatUser.name}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.wechatUser.phone">Phone</span></dt>
+        <dd>
+            <span>{{vm.wechatUser.phone}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.wechatUser.address">Address</span></dt>
+        <dd>
+            <span>{{vm.wechatUser.address}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.wechatUser.language">Language</span></dt>
+        <dd>
+            <span>{{vm.wechatUser.language}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="wechat-user-detail.edit({id:vm.wechatUser.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

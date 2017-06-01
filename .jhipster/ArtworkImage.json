@@ -1,0 +1,22 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "artwork",
+            "otherEntityName": "artwork",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "image",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170601095247",
+    "entityTableName": "artwork_image",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

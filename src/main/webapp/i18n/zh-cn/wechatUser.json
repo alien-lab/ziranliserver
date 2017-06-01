@@ -1,0 +1,28 @@
+{
+    "ziranliserverApp": {
+        "wechatUser" : {
+            "home": {
+                "title": "Wechat Users",
+                "createLabel": "Create a new Wechat User",
+                "createOrEditLabel": "Create or edit a Wechat User"
+            },
+            "created": "A new Wechat User is created with identifier {{ param }}",
+            "updated": "A Wechat User is updated with identifier {{ param }}",
+            "deleted": "A Wechat User is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Wechat User {{ id }}?"
+            },
+            "detail": {
+                "title": "Wechat User"
+            },
+            "openId": "Open Id",
+            "nickName": "Nick Name",
+            "icon": "Icon",
+            "area": "Area",
+            "name": "Name",
+            "phone": "Phone",
+            "address": "Address",
+            "language": "Language"
+        }
+    }
+}

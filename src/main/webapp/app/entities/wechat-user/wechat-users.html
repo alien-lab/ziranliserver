@@ -1,0 +1,74 @@
+<div>
+    <h2 data-translate="ziranliserverApp.wechatUser.home.title">Wechat Users</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="wechat-user.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="ziranliserverApp.wechatUser.home.createLabel">
+                        Create new Wechat User
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="openId"><span data-translate="ziranliserverApp.wechatUser.openId">Open Id</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="nickName"><span data-translate="ziranliserverApp.wechatUser.nickName">Nick Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="icon"><span data-translate="ziranliserverApp.wechatUser.icon">Icon</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="area"><span data-translate="ziranliserverApp.wechatUser.area">Area</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="name"><span data-translate="ziranliserverApp.wechatUser.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="phone"><span data-translate="ziranliserverApp.wechatUser.phone">Phone</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="address"><span data-translate="ziranliserverApp.wechatUser.address">Address</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="language"><span data-translate="ziranliserverApp.wechatUser.language">Language</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="wechatUser in vm.wechatUsers track by wechatUser.id">
+                    <td><a ui-sref="wechat-user-detail({id:wechatUser.id})">{{wechatUser.id}}</a></td>
+                    <td>{{wechatUser.openId}}</td>
+                    <td>{{wechatUser.nickName}}</td>
+                    <td>{{wechatUser.icon}}</td>
+                    <td>{{wechatUser.area}}</td>
+                    <td>{{wechatUser.name}}</td>
+                    <td>{{wechatUser.phone}}</td>
+                    <td>{{wechatUser.address}}</td>
+                    <td>{{wechatUser.language}}</td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="wechat-user-detail({id:wechatUser.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="wechat-user.edit({id:wechatUser.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="wechat-user.delete({id:wechatUser.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+        <uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></uib-pagination>
+    </div>
+</div>

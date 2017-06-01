@@ -1,0 +1,25 @@
+{
+    "ziranliserverApp": {
+        "exhibitionArtwork" : {
+            "home": {
+                "title": "Exhibition Artworks",
+                "createLabel": "Create a new Exhibition Artwork",
+                "createOrEditLabel": "Create or edit a Exhibition Artwork"
+            },
+            "created": "A new Exhibition Artwork is created with identifier {{ param }}",
+            "updated": "A Exhibition Artwork is updated with identifier {{ param }}",
+            "deleted": "A Exhibition Artwork is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Exhibition Artwork {{ id }}?"
+            },
+            "detail": {
+                "title": "Exhibition Artwork"
+            },
+            "amount": "Amount",
+            "price": "Price",
+            "status": "Status",
+            "exhibition": "Exhibition",
+            "artwork": "Artwork"
+        }
+    }
+}

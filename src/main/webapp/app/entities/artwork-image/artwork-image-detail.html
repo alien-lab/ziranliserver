@@ -1,0 +1,27 @@
+
+<div>
+    <h2><span data-translate="ziranliserverApp.artworkImage.detail.title">Artwork Image</span> {{vm.artworkImage.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="ziranliserverApp.artworkImage.image">Image</span></dt>
+        <dd>
+            <span>{{vm.artworkImage.image}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.artworkImage.artwork">Artwork</span></dt>
+        <dd>
+            <a ui-sref="artwork-detail({id:vm.artworkImage.artwork.id})">{{vm.artworkImage.artwork.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="artwork-image-detail.edit({id:vm.artworkImage.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

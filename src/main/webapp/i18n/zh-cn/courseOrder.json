@@ -1,0 +1,28 @@
+{
+    "ziranliserverApp": {
+        "courseOrder" : {
+            "home": {
+                "title": "Course Orders",
+                "createLabel": "Create a new Course Order",
+                "createOrEditLabel": "Create or edit a Course Order"
+            },
+            "created": "A new Course Order is created with identifier {{ param }}",
+            "updated": "A Course Order is updated with identifier {{ param }}",
+            "deleted": "A Course Order is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Course Order {{ id }}?"
+            },
+            "detail": {
+                "title": "Course Order"
+            },
+            "payPrice": "Pay Price",
+            "payTime": "Pay Time",
+            "isShare": "Is Share",
+            "payStatus": "Pay Status",
+            "wechatOrderno": "Wechat Orderno",
+            "orderTime": "Order Time",
+            "user": "User",
+            "course": "Course"
+        }
+    }
+}

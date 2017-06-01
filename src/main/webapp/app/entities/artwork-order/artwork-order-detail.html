@@ -1,0 +1,67 @@
+
+<div>
+    <h2><span data-translate="ziranliserverApp.artworkOrder.detail.title">Artwork Order</span> {{vm.artworkOrder.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="ziranliserverApp.artworkOrder.amount">Amount</span></dt>
+        <dd>
+            <span>{{vm.artworkOrder.amount}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.artworkOrder.payPrice">Pay Price</span></dt>
+        <dd>
+            <span>{{vm.artworkOrder.payPrice}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.artworkOrder.payStatus">Pay Status</span></dt>
+        <dd>
+            <span>{{vm.artworkOrder.payStatus}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.artworkOrder.wechatOrderno">Wechat Orderno</span></dt>
+        <dd>
+            <span>{{vm.artworkOrder.wechatOrderno}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.artworkOrder.orderTime">Order Time</span></dt>
+        <dd>
+            <span>{{vm.artworkOrder.orderTime | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.artworkOrder.payTime">Pay Time</span></dt>
+        <dd>
+            <span>{{vm.artworkOrder.payTime | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.artworkOrder.address">Address</span></dt>
+        <dd>
+            <span>{{vm.artworkOrder.address}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.artworkOrder.phone">Phone</span></dt>
+        <dd>
+            <span>{{vm.artworkOrder.phone}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.artworkOrder.contact">Contact</span></dt>
+        <dd>
+            <span>{{vm.artworkOrder.contact}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.artworkOrder.orderFlag">Order Flag</span></dt>
+        <dd>
+            <span>{{vm.artworkOrder.orderFlag}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.artworkOrder.artwork">Artwork</span></dt>
+        <dd>
+            <a ui-sref="artwork-detail({id:vm.artworkOrder.artwork.id})">{{vm.artworkOrder.artwork.id}}</a>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.artworkOrder.user">User</span></dt>
+        <dd>
+            <a ui-sref="wechat-user-detail({id:vm.artworkOrder.user.id})">{{vm.artworkOrder.user.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="artwork-order-detail.edit({id:vm.artworkOrder.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

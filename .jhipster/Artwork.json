@@ -1,0 +1,58 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "images",
+            "otherEntityName": "artworkImage",
+            "otherEntityRelationshipName": "artwork"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "year",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "author",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "amount",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "price",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "memo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "coverImage",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tags",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "qrCode",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170601095246",
+    "entityTableName": "artwork",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

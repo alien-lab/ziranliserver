@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity ExhibitionArtwork.
+    -->
+    <changeSet id="20170601095249-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="exhibition_id"
+                                 baseTableName="exhibition_artwork"
+                                 constraintName="fk_exhibition_artwork_exhibition_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="exhibition"/>
+
+        <addForeignKeyConstraint baseColumnNames="artwork_id"
+                                 baseTableName="exhibition_artwork"
+                                 constraintName="fk_exhibition_artwork_artwork_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="artwork"/>
+
+    </changeSet>
+</databaseChangeLog>

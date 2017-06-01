@@ -1,0 +1,27 @@
+{
+    "ziranliserverApp": {
+        "exhibition" : {
+            "home": {
+                "title": "Exhibitions",
+                "createLabel": "Create a new Exhibition",
+                "createOrEditLabel": "Create or edit a Exhibition"
+            },
+            "created": "A new Exhibition is created with identifier {{ param }}",
+            "updated": "A Exhibition is updated with identifier {{ param }}",
+            "deleted": "A Exhibition is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Exhibition {{ id }}?"
+            },
+            "detail": {
+                "title": "Exhibition"
+            },
+            "name": "Name",
+            "startDate": "Start Date",
+            "endDate": "End Date",
+            "timeDesc": "Time Desc",
+            "memo": "Memo",
+            "coverImage": "Cover Image",
+            "qrCode": "Qr Code"
+        }
+    }
+}

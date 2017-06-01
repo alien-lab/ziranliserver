@@ -1,0 +1,35 @@
+
+<div>
+    <h2><span data-translate="ziranliserverApp.exhibitionNameList.detail.title">Exhibition Name List</span> {{vm.exhibitionNameList.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="ziranliserverApp.exhibitionNameList.joinTime">Join Time</span></dt>
+        <dd>
+            <span>{{vm.exhibitionNameList.joinTime | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.exhibitionNameList.signTime">Sign Time</span></dt>
+        <dd>
+            <span>{{vm.exhibitionNameList.signTime | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.exhibitionNameList.user">User</span></dt>
+        <dd>
+            <a ui-sref="wechat-user-detail({id:vm.exhibitionNameList.user.id})">{{vm.exhibitionNameList.user.id}}</a>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.exhibitionNameList.exhibiton">Exhibiton</span></dt>
+        <dd>
+            <a ui-sref="exhibition-detail({id:vm.exhibitionNameList.exhibiton.id})">{{vm.exhibitionNameList.exhibiton.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="exhibition-name-list-detail.edit({id:vm.exhibitionNameList.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

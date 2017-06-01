@@ -1,0 +1,129 @@
+entity Artwork {
+	name String,
+    year String,
+    author String,
+    amount Integer,
+    price Float,
+    memo String,
+    coverImage String,
+    status String,
+    tags String,
+    qrCode String
+}
+
+entity ArtworkImage {
+	image String
+}
+
+// an ignored comment
+/** not an ignored comment */
+entity Exhibition {
+	name String,
+	startDate String,
+	endDate String,
+	timeDesc String,
+    memo String,
+    coverImage String,
+    qrCode String
+}
+
+entity ExhibitionArtwork {
+	amount Integer,
+    price Float,
+    status String
+}
+
+/**
+ * Task entity.
+ * @author The JHipster team.
+ */
+entity CourseType {
+	name String
+}
+
+/**
+ * The Employee entity.
+ */
+entity Course {
+	/**
+	* The firstname attribute.
+	*/
+	name String,
+	memo String,
+	coverImage String,
+	price Float,
+	price2 Float,
+	courseTime ZonedDateTime,
+	createTime ZonedDateTime,
+    status String,
+    qrCode String
+}
+
+entity ArtworkOrder {
+	amount Integer,
+	payPrice Float,
+    payStatus String,
+    wechatOrderno String,
+    orderTime ZonedDateTime,
+    payTime ZonedDateTime,
+    address String,
+    phone String,
+    contact String,
+    orderFlag String
+}
+
+entity ExhibitionNameList {
+	joinTime ZonedDateTime,
+	signTime ZonedDateTime
+}
+entity CourseOrder {
+	payPrice Float,
+	payTime ZonedDateTime,
+    isShare String,
+    payStatus String,
+    wechatOrderno String,
+    orderTime ZonedDateTime,
+    payTime ZonedDateTime
+}
+entity ShareLog {
+	shareType String,
+	shareTime ZonedDateTime,
+    shareContentKey String,
+    shareLink String
+}
+entity WechatUser {
+	openId String,
+	nickName String,
+    icon String,
+    area String,
+    name String,
+    phone String,
+    address String,
+    language String
+}
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	Artwork{images} to ArtworkImage
+}
+
+relationship ManyToOne {
+	ExhibitionArtwork{exhibition} to Exhibition,
+    ExhibitionArtwork{artwork} to Artwork,
+    Course{courseType} to CourseType,
+    ArtworkOrder{artwork} to Artwork,
+    ArtworkOrder{user} to WechatUser,
+    ExhibitionNameList{user} to WechatUser,
+    ExhibitionNameList{exhibiton} to Exhibition,
+    CourseOrder{user} to WechatUser,
+    CourseOrder{course} to Course,
+    ShareLog{user} to WechatUser
+}
+
+
+// Set pagination options
+paginate Artwork, Exhibition, Course with infinite-scroll
+paginate all with pagination
+
+// Set service options to all except few
+service all with serviceImpl

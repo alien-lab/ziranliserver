@@ -1,0 +1,30 @@
+{
+    "ziranliserverApp": {
+        "course" : {
+            "home": {
+                "title": "Courses",
+                "createLabel": "Create a new Course",
+                "createOrEditLabel": "Create or edit a Course"
+            },
+            "created": "A new Course is created with identifier {{ param }}",
+            "updated": "A Course is updated with identifier {{ param }}",
+            "deleted": "A Course is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Course {{ id }}?"
+            },
+            "detail": {
+                "title": "Course"
+            },
+            "name": "Name",
+            "memo": "Memo",
+            "coverImage": "Cover Image",
+            "price": "Price",
+            "price2": "Price 2",
+            "courseTime": "Course Time",
+            "createTime": "Create Time",
+            "status": "Status",
+            "qrCode": "Qr Code",
+            "courseType": "Course Type"
+        }
+    }
+}

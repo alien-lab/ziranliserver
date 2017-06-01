@@ -1,0 +1,56 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "courseType",
+            "otherEntityName": "courseType",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "javadoc": "The firstname attribute.",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "memo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "coverImage",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "price",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "price2",
+            "fieldType": "Float"
+        },
+        {
+            "fieldName": "courseTime",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "createTime",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "qrCode",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170601095251",
+    "javadoc": "The Employee entity.",
+    "entityTableName": "course",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl"
+}

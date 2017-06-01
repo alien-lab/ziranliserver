@@ -1,0 +1,58 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myExhibitionNameListLabel" data-translate="ziranliserverApp.exhibitionNameList.home.createOrEditLabel">Create or edit a Exhibition Name List</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.exhibitionNameList.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.exhibitionNameList.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="ziranliserverApp.exhibitionNameList.joinTime" for="field_joinTime">Join Time</label>
+                <div class="input-group">
+                    <input id="field_joinTime" type="text" class="form-control" name="joinTime" datetime-picker="{{dateformat}}" ng-model="vm.exhibitionNameList.joinTime" is-open="vm.datePickerOpenStatus.joinTime"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('joinTime')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="ziranliserverApp.exhibitionNameList.signTime" for="field_signTime">Sign Time</label>
+                <div class="input-group">
+                    <input id="field_signTime" type="text" class="form-control" name="signTime" datetime-picker="{{dateformat}}" ng-model="vm.exhibitionNameList.signTime" is-open="vm.datePickerOpenStatus.signTime"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('signTime')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
+        </div>
+
+        <div class="form-group">
+            <label data-translate="ziranliserverApp.exhibitionNameList.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" ng-model="vm.exhibitionNameList.user" ng-options="wechatUser as wechatUser.id for wechatUser in vm.wechatusers track by wechatUser.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label data-translate="ziranliserverApp.exhibitionNameList.exhibiton" for="field_exhibiton">Exhibiton</label>
+            <select class="form-control" id="field_exhibiton" name="exhibiton" ng-model="vm.exhibitionNameList.exhibiton" ng-options="exhibition as exhibition.id for exhibition in vm.exhibitions track by exhibition.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
