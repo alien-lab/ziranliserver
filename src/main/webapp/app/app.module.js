@@ -16,7 +16,10 @@
             'ui.router',
             'infinite-scroll',
             // jhipster-needle-angularjs-add-module JHipster will add new module here
-            'angular-loading-bar'
+            'angular-loading-bar',
+            'aiyun.single.file.upload',
+            'ngMaterial',
+            'ngMessages'
         ])
         .run(run);
 

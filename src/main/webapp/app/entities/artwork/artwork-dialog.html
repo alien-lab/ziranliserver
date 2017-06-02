@@ -13,67 +13,74 @@
             <input type="text" class="form-control" id="id" name="id"
                     ng-model="vm.artwork.id" readonly />
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-12">
             <label class="control-label" data-translate="ziranliserverApp.artwork.name" for="field_name">Name</label>
             <input type="text" class="form-control" name="name" id="field_name"
                     ng-model="vm.artwork.name"
                     />
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-6">
+            <label class="control-label" data-translate="ziranliserverApp.artwork.author" for="field_author">Author</label>
+            <input type="text" class="form-control" name="author" id="field_author"
+                   ng-model="vm.artwork.author"
+            />
+        </div>
+        <div class="form-group col-md-6">
             <label class="control-label" data-translate="ziranliserverApp.artwork.year" for="field_year">Year</label>
             <input type="text" class="form-control" name="year" id="field_year"
                     ng-model="vm.artwork.year"
                     />
         </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="ziranliserverApp.artwork.author" for="field_author">Author</label>
-            <input type="text" class="form-control" name="author" id="field_author"
-                    ng-model="vm.artwork.author"
-                    />
-        </div>
-        <div class="form-group">
+        <div class="form-group col-md-6">
             <label class="control-label" data-translate="ziranliserverApp.artwork.amount" for="field_amount">Amount</label>
             <input type="number" class="form-control" name="amount" id="field_amount"
-                    ng-model="vm.artwork.amount"
-                    />
+                   ng-model="vm.artwork.amount"
+            />
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-6">
             <label class="control-label" data-translate="ziranliserverApp.artwork.price" for="field_price">Price</label>
             <input type="number" class="form-control" name="price" id="field_price"
-                    ng-model="vm.artwork.price"
-                    />
+                   ng-model="vm.artwork.price"
+            />
         </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="ziranliserverApp.artwork.memo" for="field_memo">Memo</label>
-            <input type="text" class="form-control" name="memo" id="field_memo"
+        <div class="form-group col-md-12">
+            <label class="control-label" for="field_memo">作品介绍</label>
+            <textarea type="textarea" class="form-control" rows="5" name="memo" id="field_memo"
                     ng-model="vm.artwork.memo"
-                    />
+            ></textarea>
         </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="ziranliserverApp.artwork.coverImage" for="field_coverImage">Cover Image</label>
-            <input type="text" class="form-control" name="coverImage" id="field_coverImage"
-                    ng-model="vm.artwork.coverImage"
-                    />
+        <div class="form-group col-md-12">
+            <label class="control-label">作品封面</label>
+            <!--<input type="text" class="form-control" name="coverImage" id="field_coverImage"-->
+                    <!--ng-model="vm.artwork.coverImage"-->
+                    <!--/>-->
+
+            <p><img ng-if="vm.artwork.coverImage&&vm.artwork.coverImage!=''" ng-src="{{vm.artwork.coverImage}}" style="max-width:300px;"/></p>
+            <p><single-file-upload upload-url="{{vm.uploadurl}}" file-url="vm.artwork.coverImage" button-text="上传封面图片"></single-file-upload></p>
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-12">
             <label class="control-label" data-translate="ziranliserverApp.artwork.status" for="field_status">Status</label>
-            <input type="text" class="form-control" name="status" id="field_status"
-                    ng-model="vm.artwork.status"
-                    />
+            <select type="select" class="form-control" name="status" id="field_status"
+                    ng-model="vm.artwork.status">
+                <option value="在售">在售</option>
+                <option value="售罄">售罄</option>
+                <option value="预定">预定</option>
+                <option value="停售">停售</option>
+            </select>
         </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="ziranliserverApp.artwork.tags" for="field_tags">Tags</label>
+        <div class="form-group col-md-12">
+            <label class="control-label" >作品标签</label>
             <input type="text" class="form-control" name="tags" id="field_tags"
                     ng-model="vm.artwork.tags"
                     />
         </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="ziranliserverApp.artwork.qrCode" for="field_qrCode">Qr Code</label>
-            <input type="text" class="form-control" name="qrCode" id="field_qrCode"
-                    ng-model="vm.artwork.qrCode"
-                    />
-        </div>
-
+        <!--<div class="form-group">-->
+            <!--<label class="control-label" data-translate="ziranliserverApp.artwork.qrCode" for="field_qrCode">Qr Code</label>-->
+            <!--<input type="text" class="form-control" name="qrCode" id="field_qrCode"-->
+                    <!--ng-model="vm.artwork.qrCode"-->
+                    <!--/>-->
+        <!--</div>-->
+        <div class="clearfix"></div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

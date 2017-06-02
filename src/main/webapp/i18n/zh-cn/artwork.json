@@ -2,30 +2,30 @@
     "ziranliserverApp": {
         "artwork" : {
             "home": {
-                "title": "Artworks",
-                "createLabel": "Create a new Artwork",
-                "createOrEditLabel": "Create or edit a Artwork"
+                "title": "艺术品",
+                "createLabel": "添加艺术品",
+                "createOrEditLabel": "添加或修改艺术品"
             },
-            "created": "A new Artwork is created with identifier {{ param }}",
-            "updated": "A Artwork is updated with identifier {{ param }}",
-            "deleted": "A Artwork is deleted with identifier {{ param }}",
+            "created": "新艺术品被添加，艺术品编码{{ param }}",
+            "updated": "更新了一个艺术品信息，艺术品编码 {{ param }}",
+            "deleted": "艺术品编码为 {{ param }} 的艺术品被删除",
             "delete": {
-                "question": "Are you sure you want to delete Artwork {{ id }}?"
+                "question": "确定要删除编码为 {{ id }}的艺术品吗?"
             },
             "detail": {
-                "title": "Artwork"
+                "title": "艺术品详情"
             },
-            "name": "Name",
-            "year": "Year",
-            "author": "Author",
-            "amount": "Amount",
-            "price": "Price",
-            "memo": "Memo",
-            "coverImage": "Cover Image",
-            "status": "Status",
-            "tags": "Tags",
-            "qrCode": "Qr Code",
-            "images": "Images"
+            "name": "作品名称",
+            "year": "年份",
+            "author": "作者",
+            "amount": "数量",
+            "price": "价格",
+            "memo": "介绍",
+            "coverImage": "图片",
+            "status": "状态",
+            "tags": "标签",
+            "qrCode": "二维码",
+            "images": "图册"
         }
     }
 }

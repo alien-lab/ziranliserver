@@ -125,3 +125,6 @@ jhipster:
 # ===================================================================
 
 application:
+alienlab:
+    image:
+        path: http://test.moistmedia.net/ziranliserver/uploadimage/

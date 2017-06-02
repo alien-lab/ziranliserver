@@ -9,12 +9,12 @@
 
     function ArtworkDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Artwork, ArtworkImage) {
         var vm = this;
-
+        vm.uploadurl="./api/image/upload";
         vm.artwork = entity;
         vm.clear = clear;
         vm.save = save;
         vm.artworkimages = ArtworkImage.query();
-
+        vm.artwork.status="在售";
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
         });
@@ -43,5 +43,41 @@
         }
 
 
+    }
+})();
+
+(function(){
+    'use strict';
+    angular
+        .module('ziranliserverApp')
+        .controller('ArtworkPicDialogController', ArtworkPicDialogController);
+    ArtworkPicDialogController.$inject=['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Artwork', 'ArtworkImage'];
+    function ArtworkPicDialogController($timeout, $scope, $stateParams, $uibModalInstance, entity, Artwork, ArtworkImage){
+        var vm = this;
+        vm.uploadurl="./api/image/upload";
+        vm.artwork = entity;
+        vm.clear = clear;
+        vm.save = save;
+        $timeout(function (){
+            angular.element('.form-group:eq(1)>input').focus();
+        });
+
+        function clear () {
+            $uibModalInstance.dismiss('cancel');
+        }
+
+        function save () {
+            vm.isSaving = true;
+
+        }
+
+        function onSaveSuccess (result) {
+            $uibModalInstance.close(result);
+            vm.isSaving = false;
+        }
+
+        function onSaveError () {
+            vm.isSaving = false;
+        }
     }
 })();
