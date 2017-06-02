@@ -1,18 +1,15 @@
 package com.alienlab.ziranli.domain;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-/**
- * Task entity.
- * @author The JHipster team.
- */
-@ApiModel(description = "Task entity. @author The JHipster team.")
 @Entity
 @Table(name = "course_type")
+@ApiModel(value = "课程类型")
 public class CourseType implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -21,6 +18,7 @@ public class CourseType implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ApiModelProperty(value="课程类型名称")
     @Column(name = "name")
     private String name;
 

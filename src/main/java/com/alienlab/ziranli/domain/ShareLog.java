@@ -1,6 +1,9 @@
 package com.alienlab.ziranli.domain;
 
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
@@ -11,6 +14,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "share_log")
+@ApiModel(value = "分享日志")
 public class ShareLog implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -19,18 +23,23 @@ public class ShareLog implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ApiModelProperty(value="分享内容类别")
     @Column(name = "share_type")
     private String shareType;
 
+    @ApiModelProperty(value="分享时间")
     @Column(name = "share_time")
     private ZonedDateTime shareTime;
 
+    @ApiModelProperty(value="分享内容主键")
     @Column(name = "share_content_key")
     private String shareContentKey;
 
+    @ApiModelProperty(value="分享链接")
     @Column(name = "share_link")
     private String shareLink;
 
+    @ApiModelProperty(value="关联微信用户")
     @ManyToOne
     private WechatUser user;
 

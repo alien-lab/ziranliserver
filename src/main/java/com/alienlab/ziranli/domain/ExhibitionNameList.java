@@ -1,6 +1,9 @@
 package com.alienlab.ziranli.domain;
 
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
@@ -11,6 +14,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "exhibition_name_list")
+@ApiModel(value = "展览报名表")
 public class ExhibitionNameList implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -19,15 +23,19 @@ public class ExhibitionNameList implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ApiModelProperty(value="报名日期")
     @Column(name = "join_time")
     private ZonedDateTime joinTime;
 
+    @ApiModelProperty(value="签到时间")
     @Column(name = "sign_time")
     private ZonedDateTime signTime;
 
+    @ApiModelProperty(value="关联微信用户")
     @ManyToOne
     private WechatUser user;
 
+    @ApiModelProperty(value="关联展览")
     @ManyToOne
     private Exhibition exhibiton;
 

@@ -1,6 +1,8 @@
 package com.alienlab.ziranli.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,6 +15,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "artwork")
+@ApiModel(value = "艺术品")
 public class Artwork implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -21,36 +24,47 @@ public class Artwork implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ApiModelProperty(value = "艺术品名称")
     @Column(name = "name")
     private String name;
 
+    @ApiModelProperty(value = "艺术品年份")
     @Column(name = "jhi_year")
     private String year;
 
+    @ApiModelProperty(value = "艺术品作者")
     @Column(name = "author")
     private String author;
 
+    @ApiModelProperty(value = "艺术品数量")
     @Column(name = "amount")
     private Integer amount;
 
+    @ApiModelProperty(value = "艺术品价格")
     @Column(name = "price")
     private Float price;
 
+    @ApiModelProperty(value = "艺术品介绍")
     @Column(name = "memo")
     private String memo;
 
+    @ApiModelProperty(value = "艺术品图片")
     @Column(name = "cover_image")
     private String coverImage;
 
+    @ApiModelProperty(value = "艺术品状态")
     @Column(name = "status")
     private String status;
 
+    @ApiModelProperty(value = "艺术品标签")
     @Column(name = "tags")
     private String tags;
 
+    @ApiModelProperty(value = "艺术品二维码")
     @Column(name = "qr_code")
     private String qrCode;
 
+    @ApiModelProperty(value = "关联图片")
     @OneToMany(mappedBy = "artwork")
     @JsonIgnore
     private Set<ArtworkImage> images = new HashSet<>();

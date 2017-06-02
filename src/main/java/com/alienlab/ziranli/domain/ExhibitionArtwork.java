@@ -1,6 +1,9 @@
 package com.alienlab.ziranli.domain;
 
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -10,6 +13,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "exhibition_artwork")
+@ApiModel(value = "展览关联艺术品")
 public class ExhibitionArtwork implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -18,18 +22,23 @@ public class ExhibitionArtwork implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ApiModelProperty(value="数量")
     @Column(name = "amount")
     private Integer amount;
 
+    @ApiModelProperty(value="售价")
     @Column(name = "price")
     private Float price;
 
+    @ApiModelProperty(value="状态")
     @Column(name = "status")
     private String status;
 
+    @ApiModelProperty(value="关联展览")
     @ManyToOne
     private Exhibition exhibition;
 
+    @ApiModelProperty(value="关联艺术品")
     @ManyToOne
     private Artwork artwork;
 

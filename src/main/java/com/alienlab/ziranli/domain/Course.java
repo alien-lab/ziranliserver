@@ -8,12 +8,9 @@ import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
-/**
- * The Employee entity.
- */
-@ApiModel(description = "The Employee entity.")
 @Entity
 @Table(name = "course")
+@ApiModel(value = "课程")
 public class Course implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -22,37 +19,43 @@ public class Course implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    /**
-     * The firstname attribute.
-     */
-    @ApiModelProperty(value = "The firstname attribute.")
+    @ApiModelProperty(value = "课程名")
     @Column(name = "name")
     private String name;
 
+    @ApiModelProperty(value="课程介绍")
     @Column(name = "memo")
     private String memo;
 
+    @ApiModelProperty(value="课程图片")
     @Column(name = "cover_image")
     private String coverImage;
 
+    @ApiModelProperty(value="入场费")
     @Column(name = "price")
     private Float price;
 
+    @ApiModelProperty(value="分享后入场费")
     @Column(name = "price_2")
     private Float price2;
 
+    @ApiModelProperty(value="课程时间")
     @Column(name = "course_time")
     private ZonedDateTime courseTime;
 
+    @ApiModelProperty(value="创建时间")
     @Column(name = "create_time")
     private ZonedDateTime createTime;
 
+    @ApiModelProperty(value="状态")
     @Column(name = "status")
     private String status;
 
+    @ApiModelProperty(value="课程二维码")
     @Column(name = "qr_code")
     private String qrCode;
 
+    @ApiModelProperty(value="关联课程类型")
     @ManyToOne
     private CourseType courseType;
 

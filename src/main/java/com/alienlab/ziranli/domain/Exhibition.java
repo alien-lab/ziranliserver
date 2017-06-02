@@ -1,6 +1,7 @@
 package com.alienlab.ziranli.domain;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -9,7 +10,7 @@ import java.util.Objects;
 /**
  * not an ignored comment
  */
-@ApiModel(description = "not an ignored comment")
+@ApiModel(value = "展览")
 @Entity
 @Table(name = "exhibition")
 public class Exhibition implements Serializable {
@@ -20,24 +21,31 @@ public class Exhibition implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ApiModelProperty(value="展览名")
     @Column(name = "name")
     private String name;
 
+    @ApiModelProperty(value="开始时间")
     @Column(name = "start_date")
     private String startDate;
 
+    @ApiModelProperty(value="结束时间")
     @Column(name = "end_date")
     private String endDate;
 
+    @ApiModelProperty(value="展览时间段")
     @Column(name = "time_desc")
     private String timeDesc;
 
+    @ApiModelProperty(value="展览介绍")
     @Column(name = "memo")
     private String memo;
 
+    @ApiModelProperty(value="展览图片")
     @Column(name = "cover_image")
     private String coverImage;
 
+    @ApiModelProperty(value="展览二维码")
     @Column(name = "qr_code")
     private String qrCode;
 

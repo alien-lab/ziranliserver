@@ -1,6 +1,9 @@
 package com.alienlab.ziranli.domain;
 
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
@@ -11,6 +14,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "course_order")
+@ApiModel(value = "课程订单")
 public class CourseOrder implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -19,27 +23,35 @@ public class CourseOrder implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ApiModelProperty(value="支付价格")
     @Column(name = "pay_price")
     private Float payPrice;
 
+    @ApiModelProperty(value="支付时间")
     @Column(name = "pay_time")
     private ZonedDateTime payTime;
 
+    @ApiModelProperty(value="是否分享")
     @Column(name = "is_share")
     private String isShare;
 
+    @ApiModelProperty(value="课程状态")
     @Column(name = "pay_status")
     private String payStatus;
 
+    @ApiModelProperty(value="微信订单号")
     @Column(name = "wechat_orderno")
     private String wechatOrderno;
 
+    @ApiModelProperty(value="订单时间")
     @Column(name = "order_time")
     private ZonedDateTime orderTime;
 
+    @ApiModelProperty(value="关联微信用户")
     @ManyToOne
     private WechatUser user;
 
+    @ApiModelProperty(value="关联课程")
     @ManyToOne
     private Course course;
 

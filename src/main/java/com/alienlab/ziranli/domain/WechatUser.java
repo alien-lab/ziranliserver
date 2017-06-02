@@ -1,6 +1,9 @@
 package com.alienlab.ziranli.domain;
 
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -10,6 +13,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "wechat_user")
+@ApiModel(value = "微信用户")
 public class WechatUser implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -18,27 +22,35 @@ public class WechatUser implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ApiModelProperty(value="openId")
     @Column(name = "open_id")
     private String openId;
 
+    @ApiModelProperty(value="昵称")
     @Column(name = "nick_name")
     private String nickName;
 
+    @ApiModelProperty(value="微信头像")
     @Column(name = "icon")
     private String icon;
 
+    @ApiModelProperty(value="所在省份")
     @Column(name = "area")
     private String area;
 
+    @ApiModelProperty(value="姓名")
     @Column(name = "name")
     private String name;
 
+    @ApiModelProperty(value="联系电话")
     @Column(name = "phone")
     private String phone;
 
+    @ApiModelProperty(value="住址")
     @Column(name = "address")
     private String address;
 
+    @ApiModelProperty(value="语言")
     @Column(name = "language")
     private String language;
 

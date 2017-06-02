@@ -1,6 +1,9 @@
 package com.alienlab.ziranli.domain;
 
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.ZonedDateTime;
@@ -11,6 +14,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "artwork_order")
+@ApiModel(value = "艺术品订单")
 public class ArtworkOrder implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -19,39 +23,51 @@ public class ArtworkOrder implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ApiModelProperty(value="订单数量")
     @Column(name = "amount")
     private Integer amount;
 
+    @ApiModelProperty(value="支付价格")
     @Column(name = "pay_price")
     private Float payPrice;
 
+    @ApiModelProperty(value="支付状态")
     @Column(name = "pay_status")
     private String payStatus;
 
+    @ApiModelProperty(value="微信支付订单号")
     @Column(name = "wechat_orderno")
     private String wechatOrderno;
 
+    @ApiModelProperty(value="订单时间")
     @Column(name = "order_time")
     private ZonedDateTime orderTime;
 
+    @ApiModelProperty(value="支付时间")
     @Column(name = "pay_time")
     private ZonedDateTime payTime;
 
+    @ApiModelProperty(value="派送地址")
     @Column(name = "address")
     private String address;
 
+    @ApiModelProperty(value="联系电话")
     @Column(name = "phone")
     private String phone;
 
+    @ApiModelProperty(value="收件人")
     @Column(name = "contact")
     private String contact;
 
+    @ApiModelProperty(value="发货标记")
     @Column(name = "order_flag")
     private String orderFlag;
 
+    @ApiModelProperty(value="关联艺术品")
     @ManyToOne
     private Artwork artwork;
 
+    @ApiModelProperty(value="关联微信用户")
     @ManyToOne
     private WechatUser user;
 

@@ -1,6 +1,9 @@
 package com.alienlab.ziranli.domain;
 
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -10,6 +13,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "artwork_image")
+@ApiModel(value = "艺术品图片")
 public class ArtworkImage implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -18,9 +22,11 @@ public class ArtworkImage implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ApiModelProperty(value="图片")
     @Column(name = "image")
     private String image;
 
+    @ApiModelProperty(value="关联艺术品")
     @ManyToOne
     private Artwork artwork;
 
