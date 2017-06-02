@@ -193,7 +193,32 @@
                     $state.go('^');
                 });
             }]
-        });
+        })
+            .state('artwork.pictures', {
+                parent: 'artwork',
+                url: '/{id}/pictures',
+                data: {
+                    authorities: ['ROLE_USER']
+                },
+                onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                    $uibModal.open({
+                        templateUrl: 'app/entities/artwork/artwork-pictures-dialog.html',
+                        controller: 'ArtworkPicDialogController',
+                        controllerAs: 'vm',
+                        backdrop: 'static',
+                        size: 'lg',
+                        resolve: {
+                            entity: ['Artwork', function(Artwork) {
+                                return Artwork.get({id : $stateParams.id}).$promise;
+                            }]
+                        }
+                    }).result.then(function() {
+                        $state.go('artwork', null, { reload: 'artwork' });
+                    }, function() {
+                        $state.go('^');
+                    });
+                }]
+            });
     }
 
 })();

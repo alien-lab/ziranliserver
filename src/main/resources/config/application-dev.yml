@@ -134,3 +134,7 @@ jhipster:
 # ===================================================================
 
 application:
+
+alienlab:
+    image:
+        path: http://localhost:8080/ziranliserver/uploadimage/
