@@ -86,14 +86,14 @@
                         <p style="overflow:hidden;text-overflow: ellipsis;max-height:80px">{{artwork.memo}}</p>
                     </div>
                     <div class="col-sm-2 thumbnail">
-                        <img ng-src="{{artwork.coverImage}}" alt="image">
+                        <a ui-sref="artwork.pictures({id:artwork.id})" href=""><img ng-src="{{artwork.coverImage}}" alt="image"></a>
                     </div>
                     <div class="clearfix"></div>
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
                                 ui-sref="artwork.pictures({id:artwork.id})"
                                 class="btn btn-warning btn-sm">
-                            <span class="glyphicon glyphicon-ban-circle"></span>
+                            <span class="glyphicon glyphicon-picture"></span>
                             <span class="hidden-sm-down">图册</span>
                         </button>
                         <button type="submit"

@@ -2,13 +2,13 @@
     "ziranliserverApp": {
         "artworkImage" : {
             "home": {
-                "title": "Artwork Images",
+                "title": "艺术品图册",
                 "createLabel": "Create a new Artwork Image",
                 "createOrEditLabel": "Create or edit a Artwork Image"
             },
             "created": "A new Artwork Image is created with identifier {{ param }}",
             "updated": "A Artwork Image is updated with identifier {{ param }}",
-            "deleted": "A Artwork Image is deleted with identifier {{ param }}",
+            "deleted": "图片删除成功",
             "delete": {
                 "question": "Are you sure you want to delete Artwork Image {{ id }}?"
             },
