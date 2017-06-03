@@ -20,7 +20,8 @@
                     return data;
                 }
             },
-            'update': { method:'PUT' }
+            'update': { method:'PUT' },
+            'loadImages':{method:'GET',url:'api/artwork/images/:id',isArray: true}
         });
     }
 })();

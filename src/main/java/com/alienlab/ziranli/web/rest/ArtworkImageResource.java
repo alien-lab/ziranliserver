@@ -5,6 +5,7 @@ import com.alienlab.ziranli.domain.ArtworkImage;
 import com.alienlab.ziranli.service.ArtworkImageService;
 import com.alienlab.ziranli.web.rest.util.HeaderUtil;
 import com.alienlab.ziranli.web.rest.util.PaginationUtil;
+import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
@@ -32,20 +33,14 @@ public class ArtworkImageResource {
     private final Logger log = LoggerFactory.getLogger(ArtworkImageResource.class);
 
     private static final String ENTITY_NAME = "artworkImage";
-        
+
     private final ArtworkImageService artworkImageService;
 
     public ArtworkImageResource(ArtworkImageService artworkImageService) {
         this.artworkImageService = artworkImageService;
     }
 
-    /**
-     * POST  /artwork-images : Create a new artworkImage.
-     *
-     * @param artworkImage the artworkImage to create
-     * @return the ResponseEntity with status 201 (Created) and with body the new artworkImage, or with status 400 (Bad Request) if the artworkImage has already an ID
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
+    @ApiOperation(value="添加艺术品图册图片")
     @PostMapping("/artwork-images")
     @Timed
     public ResponseEntity<ArtworkImage> createArtworkImage(@RequestBody ArtworkImage artworkImage) throws URISyntaxException {

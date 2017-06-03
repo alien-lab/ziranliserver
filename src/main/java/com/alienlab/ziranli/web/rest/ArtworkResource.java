@@ -1,10 +1,13 @@
 package com.alienlab.ziranli.web.rest;
 
+import com.alienlab.ziranli.domain.ArtworkImage;
+import com.alienlab.ziranli.web.rest.util.ExecResult;
 import com.codahale.metrics.annotation.Timed;
 import com.alienlab.ziranli.domain.Artwork;
 import com.alienlab.ziranli.service.ArtworkService;
 import com.alienlab.ziranli.web.rest.util.HeaderUtil;
 import com.alienlab.ziranli.web.rest.util.PaginationUtil;
+import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
@@ -32,7 +35,7 @@ public class ArtworkResource {
     private final Logger log = LoggerFactory.getLogger(ArtworkResource.class);
 
     private static final String ENTITY_NAME = "artwork";
-        
+
     private final ArtworkService artworkService;
 
     public ArtworkResource(ArtworkService artworkService) {
@@ -122,6 +125,21 @@ public class ArtworkResource {
         log.debug("REST request to delete Artwork : {}", id);
         artworkService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+    }
+
+    @ApiOperation("获取艺术品的对应的图册")
+    @GetMapping("/artwork/images/{id}")
+    @Timed
+    public ResponseEntity loadArtworkImages(@PathVariable Long id){
+        log.debug("load artwork images : {}", id);
+        try {
+            List<ArtworkImage> images=artworkService.loadImages(id);
+            return ResponseEntity.ok().body(images);
+        } catch (Exception e) {
+            e.printStackTrace();
+            ExecResult er=new ExecResult(false,e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(er);
+        }
     }
 
 }

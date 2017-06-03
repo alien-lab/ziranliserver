@@ -68,7 +68,6 @@
 
         function save () {
             vm.isSaving = true;
-
         }
 
         function onSaveSuccess (result) {
@@ -79,5 +78,35 @@
         function onSaveError () {
             vm.isSaving = false;
         }
+
+        vm.deleteImage=function(image){
+            ArtworkImage.delete({id:image.id},function(result){
+                loadImages();
+            });
+        }
+
+        loadImages();
+        //加载图册图片
+        function loadImages(){
+            Artwork.loadImages({id: vm.artwork.id},function(result){
+                vm.images=result;
+            });
+        }
+
+
+        $scope.$watch("lastimageurl",function(newvalue,oldvalue){
+           console.log("new Image",newvalue);
+           if(newvalue){
+               var image={
+                   image:newvalue,
+                   artwork:{
+                       id:vm.artwork.id
+                   }
+               }
+               ArtworkImage.save(image,function(result){
+                   loadImages();
+               })
+           }
+        },true);
     }
 })();
