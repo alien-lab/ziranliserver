@@ -26,7 +26,7 @@ spring:
         serialization.indent_output: true
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:mysql://test.moistmedia.net:3360/ziranliserver?useUnicode=true&characterEncoding=utf8&useSSL=false
+        url: jdbc:mysql://localhost:3306/ziranliserver?useUnicode=true&characterEncoding=utf8&useSSL=false
         username: wechat
         password: wechat123!
         hikari:
@@ -138,3 +138,13 @@ application:
 alienlab:
     image:
         path: http://localhost:8080/ziranliserver/uploadimage/
+
+
+wechat:
+    appid:  wx83f372e021582278
+    secret: 4ca45ab0eec20b50cf807346c0fccc5d
+    token:  alienzoo
+    payid:  1247614101
+    paycallback:    http://localhost:8080/ziranliserver/wxpay
+    host:
+        basepath:   http://localhost:8080/ziranliserver/

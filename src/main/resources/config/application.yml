@@ -108,3 +108,9 @@ application:
 alienlab:
     upload:
         path: /uploadimage
+
+wechat:
+    response:
+        defaultText: 欢迎关注AlienZoo。
+        subscribe: 欢迎关注AlienZoo。
+        building: 功能即将上线，敬请期待。

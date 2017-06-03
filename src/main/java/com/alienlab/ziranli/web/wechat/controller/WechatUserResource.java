@@ -1,8 +1,8 @@
-package com.alienlab.ziranli.web.rest;
+package com.alienlab.ziranli.web.wechat.controller;
 
+import com.alienlab.ziranli.web.wechat.bean.entity.WechatUser;
 import com.codahale.metrics.annotation.Timed;
-import com.alienlab.ziranli.domain.WechatUser;
-import com.alienlab.ziranli.service.WechatUserService;
+import com.alienlab.ziranli.web.wechat.service.WechatUserService;
 import com.alienlab.ziranli.web.rest.util.HeaderUtil;
 import com.alienlab.ziranli.web.rest.util.PaginationUtil;
 import io.swagger.annotations.ApiParam;
@@ -32,7 +32,7 @@ public class WechatUserResource {
     private final Logger log = LoggerFactory.getLogger(WechatUserResource.class);
 
     private static final String ENTITY_NAME = "wechatUser";
-        
+
     private final WechatUserService wechatUserService;
 
     public WechatUserResource(WechatUserService wechatUserService) {

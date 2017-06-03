@@ -1,6 +1,6 @@
-package com.alienlab.ziranli.service;
+package com.alienlab.ziranli.web.wechat.service;
 
-import com.alienlab.ziranli.domain.WechatUser;
+import com.alienlab.ziranli.web.wechat.bean.entity.WechatUser;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -19,12 +19,11 @@ public interface WechatUserService {
 
     /**
      *  Get all the wechatUsers.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
     Page<WechatUser> findAll(Pageable pageable);
-
     /**
      *  Get the "id" wechatUser.
      *
@@ -39,4 +38,7 @@ public interface WechatUserService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+
+
+    WechatUser findUserByOpenid(String openid);
 }

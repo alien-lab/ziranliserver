@@ -1,4 +1,4 @@
-package com.alienlab.ziranli.domain;
+package com.alienlab.ziranli.web.wechat.bean.entity;
 
 
 import io.swagger.annotations.ApiModel;

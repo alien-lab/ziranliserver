@@ -128,3 +128,13 @@ application:
 alienlab:
     image:
         path: http://test.moistmedia.net/ziranliserver/uploadimage/
+
+
+wechat:
+    appid:  wx83f372e021582278
+    secret: 4ca45ab0eec20b50cf807346c0fccc5d
+    token:  alienzoo
+    payid:  1247614101
+    paycallback:    http://test.moistmedia.net/ziranliserver/wxpay
+    host:
+        basepath:   http://test.moistmedia.net/ziranliserver/
