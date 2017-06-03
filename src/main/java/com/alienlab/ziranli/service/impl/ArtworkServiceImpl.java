@@ -1,10 +1,13 @@
 package com.alienlab.ziranli.service.impl;
 
+import com.alienlab.ziranli.domain.ArtworkImage;
+import com.alienlab.ziranli.repository.ArtworkImageRepository;
 import com.alienlab.ziranli.service.ArtworkService;
 import com.alienlab.ziranli.domain.Artwork;
 import com.alienlab.ziranli.repository.ArtworkRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,9 +23,11 @@ import java.util.List;
 public class ArtworkServiceImpl implements ArtworkService{
 
     private final Logger log = LoggerFactory.getLogger(ArtworkServiceImpl.class);
-    
+
     private final ArtworkRepository artworkRepository;
 
+    @Autowired
+    ArtworkImageRepository artworkImageRepository;
     public ArtworkServiceImpl(ArtworkRepository artworkRepository) {
         this.artworkRepository = artworkRepository;
     }
@@ -42,7 +47,7 @@ public class ArtworkServiceImpl implements ArtworkService{
 
     /**
      *  Get all the artworks.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
@@ -77,5 +82,15 @@ public class ArtworkServiceImpl implements ArtworkService{
     public void delete(Long id) {
         log.debug("Request to delete Artwork : {}", id);
         artworkRepository.delete(id);
+    }
+
+    @Override
+    public List<ArtworkImage> loadImages(Long artwordId) throws Exception {
+        Artwork artwork=artworkRepository.findOne(artwordId);
+        if(artwork==null){
+            throw new Exception("未找到编码为"+artwordId+"的艺术品");
+        }
+
+        return artworkImageRepository.findArtworkImagesByArtwork(artwork);
     }
 }

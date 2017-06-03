@@ -1,8 +1,11 @@
 package com.alienlab.ziranli.service;
 
 import com.alienlab.ziranli.domain.Artwork;
+import com.alienlab.ziranli.domain.ArtworkImage;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
+import java.util.List;
 
 /**
  * Service Interface for managing Artwork.
@@ -19,7 +22,7 @@ public interface ArtworkService {
 
     /**
      *  Get all the artworks.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
@@ -39,4 +42,6 @@ public interface ArtworkService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+
+    List<ArtworkImage> loadImages(Long artwordId) throws Exception;
 }
