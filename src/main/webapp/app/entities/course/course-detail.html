@@ -14,7 +14,7 @@
         </dd>
         <dt><span data-translate="ziranliserverApp.course.coverImage">Cover Image</span></dt>
         <dd>
-            <span>{{vm.course.coverImage}}</span>
+            <span class="thumbnail"><img ng-src="{{vm.course.coverImage}}"/></span>
         </dd>
         <dt><span data-translate="ziranliserverApp.course.price">Price</span></dt>
         <dd>
@@ -28,18 +28,18 @@
         <dd>
             <span>{{vm.course.courseTime | date:'medium'}}</span>
         </dd>
-        <dt><span data-translate="ziranliserverApp.course.createTime">Create Time</span></dt>
-        <dd>
-            <span>{{vm.course.createTime | date:'medium'}}</span>
-        </dd>
+        <!--<dt><span data-translate="ziranliserverApp.course.createTime">Create Time</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{vm.course.createTime | date:'medium'}}</span>-->
+        <!--</dd>-->
         <dt><span data-translate="ziranliserverApp.course.status">Status</span></dt>
         <dd>
             <span>{{vm.course.status}}</span>
         </dd>
-        <dt><span data-translate="ziranliserverApp.course.qrCode">Qr Code</span></dt>
-        <dd>
-            <span>{{vm.course.qrCode}}</span>
-        </dd>
+        <!--<dt><span data-translate="ziranliserverApp.course.qrCode">Qr Code</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{vm.course.qrCode}}</span>-->
+        <!--</dd>-->
         <dt><span data-translate="ziranliserverApp.course.courseType">Course Type</span></dt>
         <dd>
             <a ui-sref="course-type-detail({id:vm.course.courseType.id})">{{vm.course.courseType.id}}</a>

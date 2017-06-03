@@ -8,42 +8,44 @@
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" ng-show="vm.course.id">
+        <div class="form-group col-md-12" ng-show="vm.course.id">
             <label for="id" data-translate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
                     ng-model="vm.course.id" readonly />
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-12">
             <label class="control-label" data-translate="ziranliserverApp.course.name" for="field_name">Name</label>
             <input type="text" class="form-control" name="name" id="field_name"
                     ng-model="vm.course.name"
                     />
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-12">
             <label class="control-label" data-translate="ziranliserverApp.course.memo" for="field_memo">Memo</label>
-            <input type="text" class="form-control" name="memo" id="field_memo"
+            <textarea type="textarea" rows="4" class="form-control" name="memo" id="field_memo"
                     ng-model="vm.course.memo"
-                    />
+            ></textarea>
         </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="ziranliserverApp.course.coverImage" for="field_coverImage">Cover Image</label>
-            <input type="text" class="form-control" name="coverImage" id="field_coverImage"
-                    ng-model="vm.course.coverImage"
-                    />
+        <div class="form-group col-md-12">
+            <label class="control-label" data-translate="ziranliserverApp.course.coverImage">Cover Image</label>
+            <!--<input type="text" class="form-control" name="coverImage" id="field_coverImage"-->
+                    <!--ng-model="vm.course.coverImage"-->
+                    <!--/>-->
+            <p><img ng-if="vm.course.coverImage&&vm.course.coverImage!=''" ng-src="{{vm.course.coverImage}}" style="max-width:300px;"/></p>
+            <p><single-file-upload upload-url="{{vm.uploadurl}}" file-url="vm.course.coverImage" button-text="上传封面图片"></single-file-upload></p>
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-6">
             <label class="control-label" data-translate="ziranliserverApp.course.price" for="field_price">Price</label>
             <input type="number" class="form-control" name="price" id="field_price"
                     ng-model="vm.course.price"
                     />
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-6">
             <label class="control-label" data-translate="ziranliserverApp.course.price2" for="field_price2">Price 2</label>
             <input type="number" class="form-control" name="price2" id="field_price2"
                     ng-model="vm.course.price2"
                     />
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-12">
             <label class="control-label" data-translate="ziranliserverApp.course.courseTime" for="field_courseTime">Course Time</label>
                 <div class="input-group">
                     <input id="field_courseTime" type="text" class="form-control" name="courseTime" datetime-picker="{{dateformat}}" ng-model="vm.course.courseTime" is-open="vm.datePickerOpenStatus.courseTime"
@@ -53,35 +55,39 @@
                     </span>
                 </div>
         </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="ziranliserverApp.course.createTime" for="field_createTime">Create Time</label>
-                <div class="input-group">
-                    <input id="field_createTime" type="text" class="form-control" name="createTime" datetime-picker="{{dateformat}}" ng-model="vm.course.createTime" is-open="vm.datePickerOpenStatus.createTime"
-                    />
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('createTime')"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
-                </div>
-        </div>
-        <div class="form-group">
+        <!--<div class="form-group">-->
+            <!--<label class="control-label" data-translate="ziranliserverApp.course.createTime" for="field_createTime">Create Time</label>-->
+                <!--<div class="input-group">-->
+                    <!--<input id="field_createTime" type="text" class="form-control" name="createTime" datetime-picker="{{dateformat}}" ng-model="vm.course.createTime" is-open="vm.datePickerOpenStatus.createTime"-->
+                    <!--/>-->
+                    <!--<span class="input-group-btn">-->
+                        <!--<button type="button" class="btn btn-default" ng-click="vm.openCalendar('createTime')"><i class="glyphicon glyphicon-calendar"></i></button>-->
+                    <!--</span>-->
+                <!--</div>-->
+        <!--</div>-->
+        <div class="form-group col-md-12">
             <label class="control-label" data-translate="ziranliserverApp.course.status" for="field_status">Status</label>
-            <input type="text" class="form-control" name="status" id="field_status"
+            <select class="form-control" name="status" id="field_status"
                     ng-model="vm.course.status"
-                    />
+            >
+                <option value="正常">正常</option>
+                <option value="已结束">已结束</option>
+            </select>
         </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="ziranliserverApp.course.qrCode" for="field_qrCode">Qr Code</label>
-            <input type="text" class="form-control" name="qrCode" id="field_qrCode"
-                    ng-model="vm.course.qrCode"
-                    />
-        </div>
+        <!--<div class="form-group col-md-12">-->
+            <!--<label class="control-label" data-translate="ziranliserverApp.course.qrCode" for="field_qrCode">Qr Code</label>-->
+            <!--<input type="text" class="form-control" name="qrCode" id="field_qrCode"-->
+                    <!--ng-model="vm.course.qrCode"-->
+                    <!--/>-->
+        <!--</div>-->
 
-        <div class="form-group">
+        <div class="form-group col-md-12">
             <label data-translate="ziranliserverApp.course.courseType" for="field_courseType">Course Type</label>
-            <select class="form-control" id="field_courseType" name="courseType" ng-model="vm.course.courseType" ng-options="courseType as courseType.id for courseType in vm.coursetypes track by courseType.id">
+            <select class="form-control" id="field_courseType" name="courseType" ng-model="vm.course.courseType" ng-options="courseType as courseType.name for courseType in vm.coursetypes track by courseType.id">
                 <option value=""></option>
             </select>
         </div>
+        <div class="clearfix"></div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">

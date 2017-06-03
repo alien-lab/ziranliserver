@@ -2,20 +2,20 @@
     "ziranliserverApp": {
         "courseType" : {
             "home": {
-                "title": "Course Types",
-                "createLabel": "Create a new Course Type",
-                "createOrEditLabel": "Create or edit a Course Type"
+                "title": "课程类型",
+                "createLabel": "添加课程类型",
+                "createOrEditLabel": "添加或修改课程类型"
             },
-            "created": "A new Course Type is created with identifier {{ param }}",
-            "updated": "A Course Type is updated with identifier {{ param }}",
-            "deleted": "A Course Type is deleted with identifier {{ param }}",
+            "created": "课程类型 {{ param }} 添加成功",
+            "updated": "课程类型 {{ param }} 修改成功",
+            "deleted": "课程类型 {{ param }} 已被删除",
             "delete": {
-                "question": "Are you sure you want to delete Course Type {{ id }}?"
+                "question": "确定需要删除 {{ id }} 课程类型?"
             },
             "detail": {
-                "title": "Course Type"
+                "title": "课程类型"
             },
-            "name": "Name"
+            "name": "类型名称"
         }
     }
 }

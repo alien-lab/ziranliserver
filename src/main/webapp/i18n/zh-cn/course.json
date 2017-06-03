@@ -2,29 +2,29 @@
     "ziranliserverApp": {
         "course" : {
             "home": {
-                "title": "Courses",
-                "createLabel": "Create a new Course",
-                "createOrEditLabel": "Create or edit a Course"
+                "title": "课程",
+                "createLabel": "添加课程",
+                "createOrEditLabel": "添加或修改课程"
             },
-            "created": "A new Course is created with identifier {{ param }}",
-            "updated": "A Course is updated with identifier {{ param }}",
-            "deleted": "A Course is deleted with identifier {{ param }}",
+            "created": "新课程 {{ param }} 创建成功",
+            "updated": "课程 {{ param }} 被更新",
+            "deleted": "课程 {{ param }} 被删除",
             "delete": {
-                "question": "Are you sure you want to delete Course {{ id }}?"
+                "question": "确定要删除课程 {{ id }} ?"
             },
             "detail": {
-                "title": "Course"
+                "title": "课程"
             },
-            "name": "Name",
-            "memo": "Memo",
-            "coverImage": "Cover Image",
-            "price": "Price",
-            "price2": "Price 2",
-            "courseTime": "Course Time",
-            "createTime": "Create Time",
-            "status": "Status",
-            "qrCode": "Qr Code",
-            "courseType": "Course Type"
+            "name": "课程名称",
+            "memo": "课程介绍",
+            "coverImage": "封面图片",
+            "price": "课程价格",
+            "price2": "分享后价格",
+            "courseTime": "上课时间",
+            "createTime": "创建时间",
+            "status": "课程状态",
+            "qrCode": "二维码",
+            "courseType": "课程类型"
         }
     }
 }

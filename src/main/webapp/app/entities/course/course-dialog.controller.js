@@ -9,14 +9,14 @@
 
     function CourseDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Course, CourseType) {
         var vm = this;
-
+        vm.uploadurl="./api/image/upload";
         vm.course = entity;
         vm.clear = clear;
         vm.datePickerOpenStatus = {};
         vm.openCalendar = openCalendar;
         vm.save = save;
         vm.coursetypes = CourseType.query();
-
+        vm.course.status="正常";
         $timeout(function (){
             angular.element('.form-group:eq(1)>input').focus();
         });
