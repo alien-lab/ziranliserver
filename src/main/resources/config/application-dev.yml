@@ -26,7 +26,7 @@ spring:
         serialization.indent_output: true
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:mysql://localhost:3306/ziranliserver?useUnicode=true&characterEncoding=utf8&useSSL=false
+        url: jdbc:mysql://localhost:3360/ziranliserver?useUnicode=true&characterEncoding=utf8&useSSL=false
         username: wechat
         password: wechat123!
         hikari:
@@ -91,16 +91,16 @@ jhipster:
         allowed-origins: "*"
         allowed-methods: GET, PUT, POST, DELETE, OPTIONS
         allowed-headers: "*"
-        exposed-headers:
+        exposed-headers: "X-Total-Count"
         allow-credentials: true
         max-age: 1800
     security:
         authentication:
             jwt:
-                secret: my-secret-token-to-change-in-production
+                secret: alienlab
                 # Token is valid 24 hours
-                token-validity-in-seconds: 86400
-                token-validity-in-seconds-for-remember-me: 2592000
+                token-validity-in-seconds: 12800
+                token-validity-in-seconds-for-remember-me: 864000
     mail: # specific JHipster mail property, for standard properties see MailProperties
         from: ziranliserver@localhost
         base-url: http://127.0.0.1:8080
@@ -137,7 +137,7 @@ application:
 
 alienlab:
     image:
-        path: http://localhost:8080/ziranliserver/uploadimage/
+        path: http://test.moistmedia.net/ziranliserver/uploadimage/
 
 
 wechat:
@@ -145,6 +145,6 @@ wechat:
     secret: 4ca45ab0eec20b50cf807346c0fccc5d
     token:  alienzoo
     payid:  1247614101
-    paycallback:    http://localhost:8080/ziranliserver/wxpay
+    paycallback:    http://test.moistmedia.net/ziranliserver/wxpay
     host:
-        basepath:   http://localhost:8080/ziranliserver/
+        basepath:   http://test.moistmedia.net/ziranliserver/
