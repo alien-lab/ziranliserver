@@ -117,6 +117,10 @@ public class ArtworkOrderResource {
             ExecResult er=new ExecResult(false,"未找到ID为"+artId+"的艺术品");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(er);
         }
+        if(artwork.getAmount()<1){
+            ExecResult er=new ExecResult(false,"艺术品已售罄");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(er);
+        }
         try {
             List<ArtworkOrder> existsOrders=artworkOrderService.findUnpayOrder(user,artwork);
             //存在已有订单，构造已有订单返回
@@ -197,6 +201,10 @@ public class ArtworkOrderResource {
             if(tradestatus.equalsIgnoreCase("SUCCESS")){
                 artworkOrder.setPayTime(ZonedDateTime.now());
                 artworkOrder.setPayStatus("已支付");
+                //更新艺术品存量
+                Artwork artwork=artworkOrder.getArtwork();
+                artwork.setAmount(artwork.getAmount()-1);
+                artworkService.save(artwork);
                 artworkOrder=artworkOrderService.save(artworkOrder);
                 //发送微信消息推送
                 wechatMessageService.buyArtworkMessage(artworkOrder);
