@@ -1,0 +1,26 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+            ng-click="vm.clear()">&times;</button>
+    <h4 class="modal-title">选择艺术品</h4>
+</div>
+<div class="modal-body">
+    <div class="col-md-4 col-sm-6 col-xs-12 " ng-repeat="artwork in vm.requireArtworks">
+        <div class="thumbnail" style="position:relative" alien-square>
+            <span>{{artwork.name}}&nbsp;-&nbsp;{{artwork.author}}</span>
+            <img ng-src="{{artwork.coverImage}}" alt="image">
+            <input type="checkbox" pno="{{artwork.id}}" ng-model="artwork.$isselected"
+                   class="ng-valid ng-dirty ng-valid-parse ng-touched ng-empty" tabindex="0"
+                   aria-checked="false" aria-invalid="false"
+                   style="cursor:pointer; position: absolute;right: 5px;top: 5px;">
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+        <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>关闭</span>
+    </button>
+    <button type="button" ng-disabled="vm.isSaving" class="btn btn-primary" ng-click="vm.getSelects()">
+        <span class="glyphicon glyphicon-save"></span>&nbsp;<span>确定</span>
+    </button>
+</div>

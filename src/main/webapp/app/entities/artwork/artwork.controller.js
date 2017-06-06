@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -10,7 +10,6 @@
     function ArtworkController($state, Artwork, ParseLinks, AlertService, paginationConstants, pagingParams) {
 
         var vm = this;
-
         vm.loadPage = loadPage;
         vm.predicate = pagingParams.predicate;
         vm.reverse = pagingParams.ascending;
@@ -19,7 +18,9 @@
 
         loadAll();
 
-        function loadAll () {
+        function loadAll() {
+            console.log(pagingParams);
+            console.log(paginationConstants);
             Artwork.query({
                 page: pagingParams.page - 1,
                 size: vm.itemsPerPage,
@@ -32,6 +33,7 @@
                 }
                 return result;
             }
+
             function onSuccess(data, headers) {
                 vm.links = ParseLinks.parse(headers('link'));
                 vm.totalItems = headers('X-Total-Count');
@@ -39,6 +41,7 @@
                 vm.artworks = data;
                 vm.page = pagingParams.page;
             }
+
             function onError(error) {
                 AlertService.error(error.data.message);
             }

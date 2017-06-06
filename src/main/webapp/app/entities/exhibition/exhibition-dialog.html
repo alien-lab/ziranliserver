@@ -1,65 +1,89 @@
-
 <form name="editForm" role="form" novalidate ng-submit="vm.save()">
 
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
                 ng-click="vm.clear()">&times;</button>
-        <h4 class="modal-title" id="myExhibitionLabel" data-translate="ziranliserverApp.exhibition.home.createOrEditLabel">Create or edit a Exhibition</h4>
+        <h4 class="modal-title" id="myExhibitionLabel"
+            data-translate="ziranliserverApp.exhibition.home.createOrEditLabel">Create or edit a Exhibition</h4>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" ng-show="vm.exhibition.id">
+        <div class="form-group col-md-12" ng-show="vm.exhibition.id">
             <label for="id" data-translate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
-                    ng-model="vm.exhibition.id" readonly />
+                   ng-model="vm.exhibition.id" readonly/>
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-12">
             <label class="control-label" data-translate="ziranliserverApp.exhibition.name" for="field_name">Name</label>
             <input type="text" class="form-control" name="name" id="field_name"
-                    ng-model="vm.exhibition.name"
-                    />
+                   ng-model="vm.exhibition.name" required
+            />
         </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="ziranliserverApp.exhibition.startDate" for="field_startDate">Start Date</label>
-            <input type="text" class="form-control" name="startDate" id="field_startDate"
-                    ng-model="vm.exhibition.startDate"
-                    />
+        <div class="form-group col-md-6">
+            <label class="control-label" data-translate="ziranliserverApp.exhibition.startDate" for="field_startDate">Start
+                Date</label>
+            <div class="input-group">
+                <input id="field_startDate" type="text" class="form-control" name="startDate"
+                       datetime-picker="{{dateformat}}" ng-model="vm.exhibition.startDate"
+                       is-open="vm.datePickerOpenStatus.startDate" required
+                />
+                <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('startDate')"><i
+                            class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+            </div>
         </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="ziranliserverApp.exhibition.endDate" for="field_endDate">End Date</label>
-            <input type="text" class="form-control" name="endDate" id="field_endDate"
-                    ng-model="vm.exhibition.endDate"
-                    />
+        <div class="form-group col-md-6">
+            <label class="control-label" data-translate="ziranliserverApp.exhibition.endDate" for="field_endDate">End
+                Date</label>
+            <div class="input-group">
+                <input id="field_endDate" type="text" class="form-control" name="endDate"
+                       datetime-picker="{{dateformat}}" ng-model="vm.exhibition.endDate"
+                       is-open="vm.datePickerOpenStatus.endDate" required
+                />
+                <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('endDate')"><i
+                            class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+            </div>
         </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="ziranliserverApp.exhibition.timeDesc" for="field_timeDesc">Time Desc</label>
-            <input type="text" class="form-control" name="timeDesc" id="field_timeDesc"
-                    ng-model="vm.exhibition.timeDesc"
-                    />
+        <div class="form-group col-md-12">
+            <label class="control-label" data-translate="ziranliserverApp.exhibition.timeDesc" for="field_timeDesc">Time
+                Desc</label>
+            <textarea type="textarea" class="form-control" rows="5" name="timeDesc" id="field_timeDesc"
+                      ng-model="vm.exhibition.timeDesc" required
+            ></textarea>
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-12">
             <label class="control-label" data-translate="ziranliserverApp.exhibition.memo" for="field_memo">Memo</label>
-            <input type="text" class="form-control" name="memo" id="field_memo"
-                    ng-model="vm.exhibition.memo"
-                    />
+            <textarea type="textarea" class="form-control" rows="5" name="memo" id="field_memo"
+                      ng-model="vm.exhibition.memo" required
+            ></textarea>
         </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="ziranliserverApp.exhibition.coverImage" for="field_coverImage">Cover Image</label>
-            <input type="text" class="form-control" name="coverImage" id="field_coverImage"
-                    ng-model="vm.exhibition.coverImage"
-                    />
+        <div class="form-group col-md-12">
+            <label class="control-label" data-translate="ziranliserverApp.exhibition.coverImage">Cover Image</label>
+            <!--<input type="text" class="form-control" name="coverImage" id="field_coverImage"-->
+            <!--ng-model="vm.exhibition.coverImage"-->
+            <!--/>-->
+            <p><img ng-if="vm.exhibition.coverImage&&vm.exhibition.coverImage!=''" ng-src="{{vm.exhibition.coverImage}}"
+                    style="max-width:300px;"/></p>
+            <p>
+                <single-file-upload upload-url="{{vm.uploadurl}}" file-url="vm.exhibition.coverImage"
+                                    button-text="上传封面图片"></single-file-upload>
+            </p>
         </div>
-        <div class="form-group">
-            <label class="control-label" data-translate="ziranliserverApp.exhibition.qrCode" for="field_qrCode">Qr Code</label>
-            <input type="text" class="form-control" name="qrCode" id="field_qrCode"
-                    ng-model="vm.exhibition.qrCode"
-                    />
-        </div>
-
+        <!--<div class="form-group col-md-12">-->
+        <!--<label class="control-label" data-translate="ziranliserverApp.exhibition.qrCode" for="field_qrCode">Qr Code</label>-->
+        <!--<input type="text" class="form-control" name="qrCode" id="field_qrCode"-->
+        <!--ng-model="vm.exhibition.qrCode"-->
+        <!--/>-->
+        <!--</div>-->
+        <div class="clearfix"></div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
-            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
+            data-translate="entity.action.cancel">Cancel</span>
         </button>
         <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
             <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>

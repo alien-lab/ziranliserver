@@ -10,11 +10,11 @@
         </dd>
         <dt><span data-translate="ziranliserverApp.exhibition.startDate">Start Date</span></dt>
         <dd>
-            <span>{{vm.exhibition.startDate}}</span>
+            <span>{{vm.exhibition.startDate | date:'medium'}}</span>
         </dd>
         <dt><span data-translate="ziranliserverApp.exhibition.endDate">End Date</span></dt>
         <dd>
-            <span>{{vm.exhibition.endDate}}</span>
+            <span>{{vm.exhibition.endDate | date:'medium'}}</span>
         </dd>
         <dt><span data-translate="ziranliserverApp.exhibition.timeDesc">Time Desc</span></dt>
         <dd>
@@ -28,10 +28,10 @@
         <dd>
             <span>{{vm.exhibition.coverImage}}</span>
         </dd>
-        <dt><span data-translate="ziranliserverApp.exhibition.qrCode">Qr Code</span></dt>
-        <dd>
-            <span>{{vm.exhibition.qrCode}}</span>
-        </dd>
+        <!--<dt><span data-translate="ziranliserverApp.exhibition.qrCode">Qr Code</span></dt>-->
+        <!--<dd>-->
+            <!--<span>{{vm.exhibition.qrCode}}</span>-->
+        <!--</dd>-->
     </dl>
 
     <button type="submit"

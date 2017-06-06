@@ -9,8 +9,10 @@
 
     function ExhibitionDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Exhibition) {
         var vm = this;
-
+        vm.uploadurl="./api/image/upload";
         vm.exhibition = entity;
+        vm.datePickerOpenStatus = {};
+        vm.openCalendar = openCalendar;
         vm.clear = clear;
         vm.save = save;
 
@@ -41,6 +43,12 @@
             vm.isSaving = false;
         }
 
+        vm.datePickerOpenStatus.startTime = false;
+        vm.datePickerOpenStatus.endTime = false;
+
+        function openCalendar (date) {
+            vm.datePickerOpenStatus[date] = true;
+        }
 
     }
 })();

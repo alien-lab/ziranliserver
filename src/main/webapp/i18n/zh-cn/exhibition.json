@@ -2,26 +2,26 @@
     "ziranliserverApp": {
         "exhibition" : {
             "home": {
-                "title": "Exhibitions",
-                "createLabel": "Create a new Exhibition",
-                "createOrEditLabel": "Create or edit a Exhibition"
+                "title": "展览",
+                "createLabel": "添加展览",
+                "createOrEditLabel": "添加或修改展览"
             },
-            "created": "A new Exhibition is created with identifier {{ param }}",
-            "updated": "A Exhibition is updated with identifier {{ param }}",
-            "deleted": "A Exhibition is deleted with identifier {{ param }}",
+            "created": "展览 {{ param }} 添加成功",
+            "updated": "展览 {{ param }} 修改成功",
+            "deleted": "展览 {{ param }} 删除成功",
             "delete": {
-                "question": "Are you sure you want to delete Exhibition {{ id }}?"
+                "question": "确定要删除展览 {{ id }} 吗?"
             },
             "detail": {
-                "title": "Exhibition"
+                "title": "展览"
             },
-            "name": "Name",
-            "startDate": "Start Date",
-            "endDate": "End Date",
-            "timeDesc": "Time Desc",
-            "memo": "Memo",
-            "coverImage": "Cover Image",
-            "qrCode": "Qr Code"
+            "name": "展览名称",
+            "startDate": "开始时间",
+            "endDate": "结束时间",
+            "timeDesc": "时段说明",
+            "memo": "展览介绍",
+            "coverImage": "封面图片",
+            "qrCode": "二维码"
         }
     }
 }

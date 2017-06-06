@@ -93,9 +93,11 @@ public class ArtworkResource {
     @GetMapping("/artworks")
     @Timed
     public ResponseEntity<List<Artwork>> getAllArtworks(@ApiParam Pageable pageable) {
+        System.out.println(pageable);
         log.debug("REST request to get a page of Artworks");
         Page<Artwork> page = artworkService.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/artworks");
+        System.out.println(headers);
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
@@ -130,16 +132,24 @@ public class ArtworkResource {
     @ApiOperation("获取艺术品的对应的图册")
     @GetMapping("/artwork/images/{id}")
     @Timed
-    public ResponseEntity loadArtworkImages(@PathVariable Long id){
+    public ResponseEntity loadArtworkImages(@PathVariable Long id) {
         log.debug("load artwork images : {}", id);
         try {
-            List<ArtworkImage> images=artworkService.loadImages(id);
+            List<ArtworkImage> images = artworkService.loadImages(id);
             return ResponseEntity.ok().body(images);
         } catch (Exception e) {
             e.printStackTrace();
-            ExecResult er=new ExecResult(false,e.getMessage());
+            ExecResult er = new ExecResult(false, e.getMessage());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(er);
         }
     }
 
+    @ApiOperation("不分页获取所有艺术品")
+    @GetMapping("/allArtworks")
+    @Timed
+    public ResponseEntity<List<Artwork>> findAll() {
+        log.debug("不分页获取所有艺术品 : {}");
+        List<Artwork> artworks = artworkService.getAll();
+        return ResponseEntity.ok().body(artworks);
+    }
 }

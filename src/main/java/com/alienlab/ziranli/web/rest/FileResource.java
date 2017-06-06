@@ -34,6 +34,7 @@ public class FileResource {
     @PostMapping("/image/upload")
     public ResponseEntity uploadImage(@RequestPart("file") MultipartFile file, HttpServletRequest request){
         String path=request.getSession().getServletContext().getRealPath(upload_path);
+        System.out.println(path);
         BufferedOutputStream stream = null;
         if (!file.isEmpty()) {
             String fName = file.getOriginalFilename();

@@ -1,10 +1,12 @@
 package com.alienlab.ziranli.web.rest;
 
+import com.alienlab.ziranli.domain.Exhibition;
 import com.codahale.metrics.annotation.Timed;
 import com.alienlab.ziranli.domain.ExhibitionArtwork;
 import com.alienlab.ziranli.service.ExhibitionArtworkService;
 import com.alienlab.ziranli.web.rest.util.HeaderUtil;
 import com.alienlab.ziranli.web.rest.util.PaginationUtil;
+import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
@@ -32,7 +34,7 @@ public class ExhibitionArtworkResource {
     private final Logger log = LoggerFactory.getLogger(ExhibitionArtworkResource.class);
 
     private static final String ENTITY_NAME = "exhibitionArtwork";
-        
+
     private final ExhibitionArtworkService exhibitionArtworkService;
 
     public ExhibitionArtworkResource(ExhibitionArtworkService exhibitionArtworkService) {
@@ -124,4 +126,17 @@ public class ExhibitionArtworkResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 
+    @ApiOperation("根据展览获取该展览的艺术品")
+    @GetMapping("/exhibitionArtworks/{id}")
+    @Timed
+    public ResponseEntity<List<ExhibitionArtwork>> findByExhibition(@PathVariable("id") Long exhibitionId) {
+        log.debug("根据展览获取该展览的艺术品 : {}", exhibitionId);
+        List<ExhibitionArtwork> exhibitionArtworks = null;
+        try {
+            exhibitionArtworks = exhibitionArtworkService.findByExhibition(exhibitionId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ResponseEntity.ok().body(exhibitionArtworks);
+    }
 }

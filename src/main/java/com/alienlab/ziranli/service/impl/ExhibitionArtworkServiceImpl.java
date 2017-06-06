@@ -1,5 +1,7 @@
 package com.alienlab.ziranli.service.impl;
 
+import com.alienlab.ziranli.domain.Exhibition;
+import com.alienlab.ziranli.repository.ExhibitionRepository;
 import com.alienlab.ziranli.service.ExhibitionArtworkService;
 import com.alienlab.ziranli.domain.ExhibitionArtwork;
 import com.alienlab.ziranli.repository.ExhibitionArtworkRepository;
@@ -17,14 +19,16 @@ import java.util.List;
  */
 @Service
 @Transactional
-public class ExhibitionArtworkServiceImpl implements ExhibitionArtworkService{
+public class ExhibitionArtworkServiceImpl implements ExhibitionArtworkService {
 
     private final Logger log = LoggerFactory.getLogger(ExhibitionArtworkServiceImpl.class);
-    
-    private final ExhibitionArtworkRepository exhibitionArtworkRepository;
 
-    public ExhibitionArtworkServiceImpl(ExhibitionArtworkRepository exhibitionArtworkRepository) {
+    private final ExhibitionArtworkRepository exhibitionArtworkRepository;
+    private final ExhibitionRepository exhibitionRepository;
+
+    public ExhibitionArtworkServiceImpl(ExhibitionArtworkRepository exhibitionArtworkRepository, ExhibitionRepository exhibitionRepository) {
         this.exhibitionArtworkRepository = exhibitionArtworkRepository;
+        this.exhibitionRepository = exhibitionRepository;
     }
 
     /**
@@ -41,10 +45,10 @@ public class ExhibitionArtworkServiceImpl implements ExhibitionArtworkService{
     }
 
     /**
-     *  Get all the exhibitionArtworks.
-     *  
-     *  @param pageable the pagination information
-     *  @return the list of entities
+     * Get all the exhibitionArtworks.
+     *
+     * @param pageable the pagination information
+     * @return the list of entities
      */
     @Override
     @Transactional(readOnly = true)
@@ -55,10 +59,10 @@ public class ExhibitionArtworkServiceImpl implements ExhibitionArtworkService{
     }
 
     /**
-     *  Get one exhibitionArtwork by id.
+     * Get one exhibitionArtwork by id.
      *
-     *  @param id the id of the entity
-     *  @return the entity
+     * @param id the id of the entity
+     * @return the entity
      */
     @Override
     @Transactional(readOnly = true)
@@ -69,13 +73,23 @@ public class ExhibitionArtworkServiceImpl implements ExhibitionArtworkService{
     }
 
     /**
-     *  Delete the  exhibitionArtwork by id.
+     * Delete the  exhibitionArtwork by id.
      *
-     *  @param id the id of the entity
+     * @param id the id of the entity
      */
     @Override
     public void delete(Long id) {
         log.debug("Request to delete ExhibitionArtwork : {}", id);
         exhibitionArtworkRepository.delete(id);
     }
+
+    @Override
+    public List<ExhibitionArtwork> findByExhibition(Long exhibitionId) throws Exception {
+        Exhibition exhibition = exhibitionRepository.findOne(exhibitionId);
+        if (exhibition == null) {
+            throw new Exception("未找到编码为" + exhibitionId + "的展览");
+        }
+        return exhibitionArtworkRepository.findByExhibition(exhibition);
+    }
+
 }

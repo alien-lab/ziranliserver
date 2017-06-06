@@ -44,4 +44,6 @@ public interface ArtworkService {
     void delete(Long id);
 
     List<ArtworkImage> loadImages(Long artwordId) throws Exception;
+
+    List<Artwork> getAll();
 }

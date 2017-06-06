@@ -33,11 +33,11 @@ public class Exhibition implements Serializable {
     @Column(name = "end_date")
     private String endDate;
 
-    @ApiModelProperty(value="展览时间段")
+    @ApiModelProperty(value="时段说明")
     @Column(name = "time_desc")
     private String timeDesc;
 
-    @ApiModelProperty(value="展览介绍")
+    @ApiModelProperty(value="展览说明")
     @Column(name = "memo")
     private String memo;
 

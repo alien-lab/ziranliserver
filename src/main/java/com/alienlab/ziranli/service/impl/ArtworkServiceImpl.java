@@ -93,4 +93,9 @@ public class ArtworkServiceImpl implements ArtworkService{
 
         return artworkImageRepository.findArtworkImagesByArtwork(artwork);
     }
+
+    @Override
+    public List<Artwork> getAll() {
+        return artworkRepository.findAll();
+    }
 }

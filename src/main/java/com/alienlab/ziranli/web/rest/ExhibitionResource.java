@@ -32,7 +32,7 @@ public class ExhibitionResource {
     private final Logger log = LoggerFactory.getLogger(ExhibitionResource.class);
 
     private static final String ENTITY_NAME = "exhibition";
-        
+
     private final ExhibitionService exhibitionService;
 
     public ExhibitionResource(ExhibitionService exhibitionService) {
@@ -50,6 +50,7 @@ public class ExhibitionResource {
     @Timed
     public ResponseEntity<Exhibition> createExhibition(@RequestBody Exhibition exhibition) throws URISyntaxException {
         log.debug("REST request to save Exhibition : {}", exhibition);
+        System.out.println(exhibition);
         if (exhibition.getId() != null) {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new exhibition cannot already have an ID")).body(null);
         }
