@@ -136,7 +136,7 @@ public class ArtworkOrderResource {
         if(artworkOrder==null){
             artworkOrder=new ArtworkOrder();
         }
-        artworkOrder.setAmount(order.getInteger("amount"));
+        artworkOrder.setAmount(1);
         artworkOrder.setAddress(order.getString("address"));
         artworkOrder.setContact(order.getString("contact"));
         artworkOrder.setArtwork(artwork);
@@ -145,7 +145,7 @@ public class ArtworkOrderResource {
         artworkOrder.setPayPrice(price);
         artworkOrder.setPayStatus("未支付");
         artworkOrder.setPhone(order.getString("phone"));
-        String orderno=UUID.randomUUID().toString();
+        String orderno=UUID.randomUUID().toString().replaceAll("-","");
         artworkOrder.setWechatOrderno(orderno);
         artworkOrder.setUser(user);
 
