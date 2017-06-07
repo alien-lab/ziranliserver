@@ -141,13 +141,19 @@ public class ArtworkOrderResource {
         artworkOrder.setContact(order.getString("contact"));
         artworkOrder.setArtwork(artwork);
         artworkOrder.setOrderTime(ZonedDateTime.now());
-        Float price=artwork.getPrice()*100;
+        Float price=artwork.getPrice();
         artworkOrder.setPayPrice(price);
         artworkOrder.setPayStatus("未支付");
         artworkOrder.setPhone(order.getString("phone"));
         String orderno=UUID.randomUUID().toString().replaceAll("-","");
         artworkOrder.setWechatOrderno(orderno);
         artworkOrder.setUser(user);
+
+        user.setAddress(order.getString("address"));
+        user.setPhone(order.getString("phone"));
+        user.setName(order.getString("contact"));
+
+        wechatUserService.save(user);
 
         //微信下单支付
         Map<String,String> orderResult=wechatService.makeOrder(artwork.getName(),artworkOrder.getWechatOrderno(),
@@ -177,8 +183,13 @@ public class ArtworkOrderResource {
         }
     }
 
-
-    public ResponseEntity payOrder(String openid,Long orderId){
+    @ApiOperation("支付艺术品订单")
+    @PostMapping("/artwork-orders/pay")
+    @Timed
+    public ResponseEntity payOrder(@RequestBody Map param){
+        log.debug("payOrder>>>"+JSON.toJSONString(param));
+        Long orderId=TypeUtils.castToLong(param.get("orderId"));
+        String openid=TypeUtils.castToString(param.get("openid"));
         ArtworkOrder artworkOrder=artworkOrderService.findOne(orderId);
         if(artworkOrder==null){
             ExecResult er=new ExecResult(false,"查询不到订单信息,"+orderId);
@@ -192,7 +203,7 @@ public class ArtworkOrderResource {
         }
         String returncode=orderinfo.get("return_code");
         String resultcode=orderinfo.get("result_code");
-        if(!TypeUtils.castToString(orderinfo.get("openid")).equals(artworkOrder.getUser().getOpenId())){
+        if(!artworkOrder.getUser().getOpenId().equals(openid)){
             ExecResult er=new ExecResult(false,"订单创建用户与支付用户不匹配，支付失败。");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(er);
         }
@@ -204,6 +215,9 @@ public class ArtworkOrderResource {
                 //更新艺术品存量
                 Artwork artwork=artworkOrder.getArtwork();
                 artwork.setAmount(artwork.getAmount()-1);
+                if(artwork.getAmount()==0){
+                    artwork.setStatus("售罄");
+                }
                 artworkService.save(artwork);
                 artworkOrder=artworkOrderService.save(artworkOrder);
                 //发送微信消息推送
