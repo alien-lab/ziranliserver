@@ -147,7 +147,7 @@ public class WechatService {
         logger.info("/getuserinfo A code is "+code);
 
         JSONObject jo = wechatUtil.get_access_token(code);
-        if(jo.containsKey("errorcode")&&jo.getString("eroorcode").length()>1){
+        if(jo.containsKey("errcode")&&jo.getString("errcode").length()>1){
             ExecResult er=new ExecResult(false,"获取access_token错误");
             return JSONObject.parseObject(er.toString());
         }else{

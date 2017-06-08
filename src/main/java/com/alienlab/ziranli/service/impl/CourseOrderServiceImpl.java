@@ -3,6 +3,7 @@ package com.alienlab.ziranli.service.impl;
 import com.alienlab.ziranli.service.CourseOrderService;
 import com.alienlab.ziranli.domain.CourseOrder;
 import com.alienlab.ziranli.repository.CourseOrderRepository;
+import com.alienlab.ziranli.web.wechat.bean.entity.WechatUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -20,7 +21,7 @@ import java.util.List;
 public class CourseOrderServiceImpl implements CourseOrderService{
 
     private final Logger log = LoggerFactory.getLogger(CourseOrderServiceImpl.class);
-    
+
     private final CourseOrderRepository courseOrderRepository;
 
     public CourseOrderServiceImpl(CourseOrderRepository courseOrderRepository) {
@@ -42,7 +43,7 @@ public class CourseOrderServiceImpl implements CourseOrderService{
 
     /**
      *  Get all the courseOrders.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
@@ -77,5 +78,16 @@ public class CourseOrderServiceImpl implements CourseOrderService{
     public void delete(Long id) {
         log.debug("Request to delete CourseOrder : {}", id);
         courseOrderRepository.delete(id);
+    }
+
+    @Override
+    public List<CourseOrder> findMyCourseOrder(WechatUser wechatUser) {
+        try{
+            log.debug("获取"+wechatUser+"课程购买记录");
+            return courseOrderRepository.findByUser(wechatUser);
+        }catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 }

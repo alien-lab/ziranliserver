@@ -1,5 +1,8 @@
 package com.alienlab.ziranli.web.rest;
 
+import com.alienlab.ziranli.domain.Course;
+import com.alienlab.ziranli.web.wechat.bean.entity.WechatUser;
+import com.alienlab.ziranli.web.wechat.service.WechatUserService;
 import com.codahale.metrics.annotation.Timed;
 import com.alienlab.ziranli.domain.CourseOrder;
 import com.alienlab.ziranli.service.CourseOrderService;
@@ -32,11 +35,14 @@ public class CourseOrderResource {
     private final Logger log = LoggerFactory.getLogger(CourseOrderResource.class);
 
     private static final String ENTITY_NAME = "courseOrder";
-        
+
     private final CourseOrderService courseOrderService;
 
-    public CourseOrderResource(CourseOrderService courseOrderService) {
+    private final WechatUserService wechatUserService;
+
+    public CourseOrderResource(CourseOrderService courseOrderService, WechatUserService wechatUserService) {
         this.courseOrderService = courseOrderService;
+        this.wechatUserService = wechatUserService;
     }
 
     /**
@@ -122,6 +128,16 @@ public class CourseOrderResource {
         log.debug("REST request to delete CourseOrder : {}", id);
         courseOrderService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+    }
+
+    //获取个人课程订单记录
+    @GetMapping("/course-orders/{openid}")
+    @Timed
+    public ResponseEntity<List<CourseOrder>> getMyCourseOrders(@PathVariable String openid) {
+        log.debug("获取个人课程订单");
+        WechatUser wechatUser = wechatUserService.findUserByOpenid(openid);
+        List<CourseOrder> courseOrders = courseOrderService.findMyCourseOrder(wechatUser);
+        return ResponseEntity.ok().body(courseOrders);
     }
 
 }

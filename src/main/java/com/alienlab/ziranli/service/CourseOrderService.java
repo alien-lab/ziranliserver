@@ -1,8 +1,11 @@
 package com.alienlab.ziranli.service;
 
 import com.alienlab.ziranli.domain.CourseOrder;
+import com.alienlab.ziranli.web.wechat.bean.entity.WechatUser;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
+import java.util.List;
 
 /**
  * Service Interface for managing CourseOrder.
@@ -19,7 +22,7 @@ public interface CourseOrderService {
 
     /**
      *  Get all the courseOrders.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
@@ -39,4 +42,6 @@ public interface CourseOrderService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+    //查询个人课程购买记录
+    List<CourseOrder> findMyCourseOrder(WechatUser wechatUser);
 }

@@ -1,5 +1,7 @@
 package com.alienlab.ziranli.web.rest;
 
+import com.alienlab.ziranli.web.wechat.bean.entity.WechatUser;
+import com.alienlab.ziranli.web.wechat.service.WechatUserService;
 import com.codahale.metrics.annotation.Timed;
 import com.alienlab.ziranli.domain.ArtworkOrder;
 import com.alienlab.ziranli.service.ArtworkOrderService;
@@ -32,11 +34,14 @@ public class ArtworkOrderResource {
     private final Logger log = LoggerFactory.getLogger(ArtworkOrderResource.class);
 
     private static final String ENTITY_NAME = "artworkOrder";
-        
+
     private final ArtworkOrderService artworkOrderService;
 
-    public ArtworkOrderResource(ArtworkOrderService artworkOrderService) {
+    private final WechatUserService wechatUserService;
+
+    public ArtworkOrderResource(ArtworkOrderService artworkOrderService, WechatUserService wechatUserService) {
         this.artworkOrderService = artworkOrderService;
+        this.wechatUserService = wechatUserService;
     }
 
     /**
@@ -122,6 +127,16 @@ public class ArtworkOrderResource {
         log.debug("REST request to delete ArtworkOrder : {}", id);
         artworkOrderService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+    }
+
+    //获取个人艺术品订单记录
+    @GetMapping("/artwork-orders/{openid}")
+    @Timed
+    public ResponseEntity<List<ArtworkOrder>> getMyArtworkOrders(@PathVariable String openid) {
+        log.debug("获取个人艺术品订单");
+        WechatUser wechatUser = wechatUserService.findUserByOpenid(openid);
+        List<ArtworkOrder> artworkOrders = artworkOrderService.findMyArtworkOrder(wechatUser);
+        return ResponseEntity.ok().body(artworkOrders);
     }
 
 }
