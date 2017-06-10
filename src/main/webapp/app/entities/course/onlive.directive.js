@@ -53,7 +53,7 @@
             }
             scope.deleteOnlive=function(onlive){
                 if(scope.courseid){
-                    onliveService.delOnlive(scope.courseid,scope.onliveid,function(data){
+                    onliveService.delOnlive(scope.courseid,onlive.bc_no,function(data){
                         scope.currentOnlive=undefined;
                         loadRoom();
                     })
