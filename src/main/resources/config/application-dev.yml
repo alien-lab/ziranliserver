@@ -148,3 +148,4 @@ wechat:
     paycallback:    http://test.moistmedia.net/ziranliserver/wxpay
     host:
         basepath:   http://test.moistmedia.net/ziranliwechat/
+        allowed:    116.62.47.176,test.moistmedia.net,www.bigercat.com

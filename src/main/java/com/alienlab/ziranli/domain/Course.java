@@ -59,6 +59,8 @@ public class Course implements Serializable {
     @ManyToOne
     private CourseType courseType;
 
+    private String onliveId;
+
     public Long getId() {
         return id;
     }
@@ -195,6 +197,14 @@ public class Course implements Serializable {
 
     public void setCourseType(CourseType courseType) {
         this.courseType = courseType;
+    }
+
+    public String getOnliveId() {
+        return onliveId;
+    }
+
+    public void setOnliveId(String onliveId) {
+        this.onliveId = onliveId;
     }
 
     @Override
