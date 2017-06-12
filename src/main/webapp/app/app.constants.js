@@ -5,5 +5,6 @@
         .module('ziranliserverApp')
         .constant('VERSION', "0.0.1-SNAPSHOT")
         .constant('DEBUG_INFO_ENABLED', true)
+        .constant('domain',"http://test.moistmedia.net/ziranliwechat/")
 ;
 })();

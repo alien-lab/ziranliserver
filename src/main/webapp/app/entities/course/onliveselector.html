@@ -1,0 +1,35 @@
+<div class="list-group">
+    <div class="list-group-item" ng-repeat="onlive in onlivelist" ng-if="!currentOnlive.bc_name">
+        <div class="col-md-2" alien-image image="{{'http://test.moistmedia.net/wechatcore/onlive/media/cover/'+onlive.bc_cover}}">
+
+        </div>
+        <div class="col-md-9">
+            <h4>{{onlive.bc_name}}</h4>
+            <p>
+                {{onlive.bc_abstract}}
+            </p>
+        </div>
+        <div class="col-md-1">
+            <div class="btn btn-warning"  ng-click="addOnlive(onlive)">选择</div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="alert-info" ng-if="onlivelist.length==0&&!currentOnlive.bc_name">
+        <p>暂无可用的直播内容</p>
+    </div>
+    <div class="list-group-item" ng-if="currentOnlive.bc_name">
+        <div class="col-md-2" alien-image image="{{'http://test.moistmedia.net/wechatcore/onlive/media/cover/'+currentOnlive.bc_cover}}">
+
+        </div>
+        <div class="col-md-9">
+            <h4>{{currentOnlive.bc_name}}</h4>
+            <p>
+                {{currentOnlive.bc_abstract}}
+            </p>
+        </div>
+        <div class="col-md-1">
+            <div class="btn btn-danger"  ng-click="deleteOnlive(currentOnlive)">取消</div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>

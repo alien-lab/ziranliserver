@@ -4,6 +4,8 @@ import com.alienlab.ziranli.domain.ShareLog;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 /**
  * Service Interface for managing ShareLog.
  */
@@ -19,7 +21,7 @@ public interface ShareLogService {
 
     /**
      *  Get all the shareLogs.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */
@@ -39,4 +41,6 @@ public interface ShareLogService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+
+    List<ShareLog> getCourseShareLog(Long courseId, String openid) throws Exception;
 }

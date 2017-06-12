@@ -1,5 +1,9 @@
 package com.alienlab.ziranli.web.rest;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.util.TypeUtils;
+import com.alienlab.ziranli.web.rest.util.ExecResult;
 import com.codahale.metrics.annotation.Timed;
 import com.alienlab.ziranli.domain.Course;
 import com.alienlab.ziranli.service.CourseService;
@@ -16,10 +20,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.lang.reflect.Type;
 import java.net.URI;
 import java.net.URISyntaxException;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 /**
@@ -32,7 +38,7 @@ public class CourseResource {
     private final Logger log = LoggerFactory.getLogger(CourseResource.class);
 
     private static final String ENTITY_NAME = "course";
-        
+
     private final CourseService courseService;
 
     public CourseResource(CourseService courseService) {
@@ -54,6 +60,9 @@ public class CourseResource {
             return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(ENTITY_NAME, "idexists", "A new course cannot already have an ID")).body(null);
         }
         Course result = courseService.save(course);
+        if(course.getOnliveId()!=null&&course.getOnliveId().length()>0){
+            courseService.addCourseOnlive(result.getId(),course.getOnliveId());
+        }
         return ResponseEntity.created(new URI("/api/courses/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -122,6 +131,46 @@ public class CourseResource {
         log.debug("REST request to delete Course : {}", id);
         courseService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+    }
+
+    @GetMapping("/courses/onlive")
+    @Timed
+    public ResponseEntity loadOnliveRooms(){
+        List result=courseService.getAllOnliveRooms();
+        return ResponseEntity.ok().body(result);
+    }
+    @GetMapping("/courses/onlive/{courseId}")
+    public ResponseEntity loadCourseOnlive(@PathVariable Long courseId){
+        Map result=courseService.getCourseOnlive(courseId);
+        if(result!=null){
+            return ResponseEntity.ok().body(result);
+        }else{
+            return ResponseEntity.ok().body(new JSONObject());
+        }
+
+    }
+
+    @PostMapping("/courses/onlive")
+    public ResponseEntity loadCourseOnlive(@RequestBody Map map){
+        Long courseId=TypeUtils.castToLong(map.get("courseId"));
+        String onliveId=TypeUtils.castToString(map.get("onliveId"));
+        Map validatemap=courseService.getCourseOnlive(courseId);
+        if(validatemap!=null&&validatemap.containsKey("bc_no")){
+            if(onliveId.equals(TypeUtils.castToString(validatemap.get("bc_no")))){
+                ExecResult er=new ExecResult(false,"已经绑定了该直播内容");
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(er);
+            }
+        }
+        boolean result=courseService.addCourseOnlive(courseId,onliveId );
+        ExecResult er=new ExecResult(result,(result?"直播关联成功":"直播关联失败"));
+        return ResponseEntity.ok().body(er);
+    }
+
+    @DeleteMapping("/courses/onlive/{courseId}/{onliveId}")
+    public ResponseEntity loadCourseOnlive(@PathVariable Long courseId,@PathVariable String onliveId){
+        boolean result=courseService.delCourseOnlive(courseId, onliveId);
+        ExecResult er=new ExecResult(result,(result?"解除直播关联成功":"解除直播关联失败"));
+        return ResponseEntity.ok().body(er);
     }
 
 }

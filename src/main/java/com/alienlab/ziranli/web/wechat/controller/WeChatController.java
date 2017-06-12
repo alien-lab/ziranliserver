@@ -4,7 +4,9 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.util.TypeUtils;
 import com.alienlab.ziranli.web.rest.util.ExecResult;
+import com.alienlab.ziranli.web.wechat.bean.entity.WechatUser;
 import com.alienlab.ziranli.web.wechat.service.WechatService;
+import com.alienlab.ziranli.web.wechat.service.WechatUserService;
 import com.alienlab.ziranli.web.wechat.util.SignUtil;
 import com.alienlab.ziranli.web.wechat.util.WechatUtil;
 import org.apache.log4j.Logger;
@@ -34,6 +36,8 @@ public class WeChatController {
 
     @Autowired
     WechatService wechatService;
+    @Autowired
+    WechatUserService wechatUserService;
 
     private static Logger logger = Logger.getLogger(WeChatController.class);
 
@@ -77,8 +81,22 @@ public class WeChatController {
     }
 
     @RequestMapping(value="/getuserinfo",method = RequestMethod.GET)
-    public JSONObject getUserInfo(@RequestParam("code") String code){
-        return wechatService.getUserInfo(code);
+    public JSONObject getUserInfo(@RequestParam("code") String code,@RequestParam(value="state",required = false) String state){
+        JSONObject wechatUser= wechatService.getUserInfo(code);
+        if(wechatUser.containsKey("openid")){
+            WechatUser user=wechatUserService.findUserByOpenid(wechatUser.getString("openid"));
+            if(user==null){//新用户
+                user=new WechatUser();
+
+            }
+            user.setOpenId(wechatUser.getString("openid"));
+            user.setNickName(wechatUser.getString("nickname"));
+            user.setIcon(wechatUser.getString("headimgurl"));
+            user=wechatUserService.save(user);
+            return JSONObject.parseObject(JSONObject.toJSONString(user));
+        }else{
+            return null;
+        }
     }
 
 

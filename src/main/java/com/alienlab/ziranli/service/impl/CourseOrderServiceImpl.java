@@ -1,5 +1,6 @@
 package com.alienlab.ziranli.service.impl;
 
+import com.alienlab.ziranli.domain.Course;
 import com.alienlab.ziranli.service.CourseOrderService;
 import com.alienlab.ziranli.domain.CourseOrder;
 import com.alienlab.ziranli.repository.CourseOrderRepository;
@@ -78,6 +79,16 @@ public class CourseOrderServiceImpl implements CourseOrderService{
     public void delete(Long id) {
         log.debug("Request to delete CourseOrder : {}", id);
         courseOrderRepository.delete(id);
+    }
+
+    @Override
+    public List<CourseOrder> findCourseByUser(WechatUser user, String status) throws Exception {
+        return courseOrderRepository.findCourseOrdersByUserAndPayStatus(user,status);
+    }
+
+    public List<CourseOrder> findOrderByCourseUser(WechatUser user, Course course, String status){
+        List<CourseOrder> result=courseOrderRepository.findCourseOrdersByUserAndPayStatusAndCourse(user,status,course);
+        return result;
     }
 
     @Override
