@@ -352,7 +352,7 @@ public class CourseOrderResource {
     }
 
     //获取个人课程订单记录
-    @GetMapping("/course-orders/{openid}")
+    @GetMapping("/courseOrders/{openid}")
     @Timed
     public ResponseEntity<List<CourseOrder>> getMyCourseOrders(@PathVariable String openid) {
         log.debug("获取个人课程订单");

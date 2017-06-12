@@ -10,8 +10,6 @@ import com.alienlab.ziranli.web.wechat.bean.entity.WechatUser;
 import com.alienlab.ziranli.web.wechat.service.WechatMessageService;
 import com.alienlab.ziranli.web.wechat.service.WechatService;
 import com.alienlab.ziranli.web.wechat.service.WechatUserService;
-import com.alienlab.ziranli.web.wechat.bean.entity.WechatUser;
-import com.alienlab.ziranli.web.wechat.service.WechatUserService;
 import com.codahale.metrics.annotation.Timed;
 import com.alienlab.ziranli.domain.ArtworkOrder;
 import com.alienlab.ziranli.service.ArtworkOrderService;
@@ -66,11 +64,9 @@ public class ArtworkOrderResource {
 
     private final ArtworkOrderService artworkOrderService;
 
-    private final WechatUserService wechatUserService;
 
-    public ArtworkOrderResource(ArtworkOrderService artworkOrderService, WechatUserService wechatUserService) {
+    public ArtworkOrderResource(ArtworkOrderService artworkOrderService) {
         this.artworkOrderService = artworkOrderService;
-        this.wechatUserService = wechatUserService;
     }
 
     /**
@@ -305,7 +301,7 @@ public class ArtworkOrderResource {
     }
 
     //获取个人艺术品订单记录
-    @GetMapping("/artwork-orders/{openid}")
+    @GetMapping("/artworkOrders/{openid}")
     @Timed
     public ResponseEntity<List<ArtworkOrder>> getMyArtworkOrders(@PathVariable String openid) {
         log.debug("获取个人艺术品订单");
