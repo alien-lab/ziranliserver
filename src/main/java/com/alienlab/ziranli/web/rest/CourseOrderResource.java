@@ -131,6 +131,8 @@ public class CourseOrderResource {
             price=course.getPrice2();
             log.debug("shared price is "+price);
             courseOrder.setIsShare("1");
+        }else{
+            log.debug("no share log.");
         }
 
         courseOrder.setCourse(course);
@@ -159,6 +161,10 @@ public class CourseOrderResource {
                     JSONObject result=new JSONObject();
                     result.put("courseOrder",courseOrder);
                     result.put("orderInfo",orderInfo);
+//                    Map onlive=courseService.getCourseOnlive(courseOrder.getCourse().getId());
+//                    if(onlive!=null){
+//                        result.put("onlive",onlive);
+//                    }
                     return ResponseEntity.ok().body(result);
                 }else{ //如果下单出现错误，返回错误信息到页面
                     ExecResult er=new ExecResult(false,orderResult.get("err_code_des"));
@@ -176,6 +182,10 @@ public class CourseOrderResource {
             courseOrder=courseOrderService.save(courseOrder);
             JSONObject result=new JSONObject();
             result.put("courseOrder",courseOrder);
+            Map onlive=courseService.getCourseOnlive(courseOrder.getCourse().getId());
+            if(onlive!=null){
+                result.put("onlive",onlive);
+            }
             return ResponseEntity.ok().body(result);
         }
     }
@@ -219,7 +229,13 @@ public class CourseOrderResource {
                 //发送微信消息推送
                 wechatMessageService.buyCourseMessage(courseOrder);
 
-                return ResponseEntity.ok().body(courseOrder);
+                JSONObject j=new JSONObject();
+                j.put("courseOrder",courseOrder);
+                Map onlive=courseService.getCourseOnlive(courseOrder.getCourse().getId());
+                if(onlive!=null){
+                    j.put("onlive",onlive);
+                }
+                return ResponseEntity.ok().body(j);
             }else{
                 ExecResult er=new ExecResult(false,"微信支付未成功，支付状态："+tradestatus);
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(er);
@@ -231,7 +247,7 @@ public class CourseOrderResource {
     }
 
 
-    @ApiOperation("支付艺术品订单")
+    @ApiOperation("获取用户课程购买信息")
     @GetMapping("/course-orders/{courseId}/{openid}")
     @Timed
     public ResponseEntity loadCourseOrderByUser(@PathVariable Long courseId,@PathVariable String openid){
@@ -245,7 +261,14 @@ public class CourseOrderResource {
         try {
             List<CourseOrder> result=courseOrderService.findOrderByCourseUser(user,course,"已支付");
             if(result!=null&&result.size()>0){
-                return ResponseEntity.ok().body((CourseOrder)result.get(0));
+                Map onlive=courseService.getCourseOnlive(courseId);
+                JSONObject j=new JSONObject();
+                j.put("courseOrder",(CourseOrder)result.get(0));
+                if(onlive!=null){
+                    j.put("onlive",onlive);
+                }
+
+                return ResponseEntity.ok().body(j);
             }else{
                 return ResponseEntity.ok().body(new JSONObject());
             }
