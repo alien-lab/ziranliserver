@@ -2,6 +2,7 @@ package com.alienlab.ziranli.web.wechat.controller;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.util.TypeUtils;
 import com.alienlab.ziranli.web.rest.util.ExecResult;
 import com.alienlab.ziranli.web.wechat.service.WechatService;
 import com.alienlab.ziranli.web.wechat.util.SignUtil;
@@ -11,10 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
@@ -41,25 +39,25 @@ public class WeChatController {
 
 
 
-    @RequestMapping(value="/jsapi",method = RequestMethod.POST,consumes="application/json")
+    @RequestMapping(value="/jsapi",method = RequestMethod.GET)
     public Map<String,String> getJsApiTicket(@RequestParam("url") String url){
         return wechatService.getJsApiTicket(url);
     }
 
-    @RequestMapping(value="/getmediainfotest",method = RequestMethod.POST,consumes="application/json")
+    @RequestMapping(value="/getmediainfotest",method = RequestMethod.GET)
     public JSONObject getmediainfotest(@RequestParam("media_id") String media_id){
         return wechatService.getmediainfotest(media_id);
     }
 
-    @RequestMapping(value="/getmediainfo",method = RequestMethod.POST,consumes="application/json")
+    @RequestMapping(value="/getmediainfo",method = RequestMethod.GET)
     public JSONObject getmediainfo(@RequestParam("btn_id") String btn_id){
         return wechatService.getmediainfo(btn_id);
     }
 
 
     @RequestMapping(value="/createMenu",method = RequestMethod.POST)
-    public ResponseEntity getallmedia(@RequestParam("menu") String menu){
-        ExecResult result = wechatService.getallmedia(menu);
+    public ResponseEntity getallmedia(@RequestBody Map param){
+        ExecResult result = wechatService.getallmedia(TypeUtils.castToString(param.get("menu")));
         if(result.getResult()>0){
             return ResponseEntity.ok().body( result) ;
         }else{
@@ -67,7 +65,7 @@ public class WeChatController {
         }
     }
 
-    @RequestMapping(value="/getallmedia",method = RequestMethod.POST)
+    @RequestMapping(value="/getallmedia",method = RequestMethod.GET)
     public JSONObject getallmedia(@RequestParam("type") String type, @RequestParam("offset") String offset, @RequestParam("count") String count){
         return wechatService.getallmedia(type,offset,count);
     }
@@ -89,7 +87,7 @@ public class WeChatController {
         return wechatService.getQRCode(scene_id);
     }
 
-    @RequestMapping(value="/qrresponse",method = RequestMethod.POST)
+    @RequestMapping(value="/qrresponse",method = RequestMethod.GET)
     public JSONObject responseQrEvent(@RequestParam("qrid") String qrid){
         return wechatService.responseQrEvent(qrid);
     }

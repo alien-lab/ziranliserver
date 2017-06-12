@@ -147,4 +147,4 @@ wechat:
     payid:  1247614101
     paycallback:    http://test.moistmedia.net/ziranliserver/wxpay
     host:
-        basepath:   http://test.moistmedia.net/ziranliserver/
+        basepath:   http://test.moistmedia.net/ziranliwechat/

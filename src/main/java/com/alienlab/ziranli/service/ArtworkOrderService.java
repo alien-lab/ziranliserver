@@ -1,5 +1,6 @@
 package com.alienlab.ziranli.service;
 
+import com.alienlab.ziranli.domain.Artwork;
 import com.alienlab.ziranli.domain.ArtworkOrder;
 import com.alienlab.ziranli.web.wechat.bean.entity.WechatUser;
 import org.springframework.data.domain.Page;
@@ -42,6 +43,9 @@ public interface ArtworkOrderService {
      *  @param id the id of the entity
      */
     void delete(Long id);
+
+    List<ArtworkOrder> findUnpayOrder(String openid, Long artId) throws Exception;
+    List<ArtworkOrder> findUnpayOrder(WechatUser user, Artwork artwork) throws Exception;
     //查询个人艺术品购买记录
     List<ArtworkOrder> findMyArtworkOrder(WechatUser wechatUser);
 }

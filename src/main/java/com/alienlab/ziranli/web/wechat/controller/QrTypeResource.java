@@ -125,7 +125,7 @@ public class QrTypeResource {
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("qrType", id.toString())).build();
     }
 
-    @PostMapping(value="/qr-type-wechat",consumes="application/json")
+    @GetMapping(value="/qr-type-wechat")
     @Timed
     public JSONObject getqrcodepar(@RequestParam String key){
         return qrTypeService.getqrcodepar(key);
