@@ -1,6 +1,6 @@
 {
     "ziranliserverApp": {
-        "artwork" : {
+        "artwork": {
             "home": {
                 "title": "艺术品",
                 "createLabel": "添加艺术品",
@@ -25,7 +25,10 @@
             "status": "状态",
             "tags": "标签",
             "qrCode": "二维码",
-            "images": "图册"
+            "images": "图册",
+            "size": "尺寸",
+            "material": "材质",
+            "artworkType": "类型"
         }
     }
 }

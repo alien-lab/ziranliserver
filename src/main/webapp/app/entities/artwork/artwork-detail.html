@@ -1,4 +1,3 @@
-
 <div>
     <h2><span data-translate="ziranliserverApp.artwork.detail.title">Artwork</span> {{vm.artwork.name}}</h2>
     <hr>
@@ -24,13 +23,25 @@
         <dd>
             <span>{{vm.artwork.price}}</span>
         </dd>
+        <dt><span data-translate="ziranliserverApp.artwork.size">Size</span></dt>
+        <dd>
+            <span>{{vm.artwork.size}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.artwork.material">Material</span></dt>
+        <dd>
+            <span>{{vm.artwork.material}}</span>
+        </dd>
+        <dt><span data-translate="ziranliserverApp.artwork.artworkType">ArtworkType</span></dt>
+        <dd>
+            <span>{{vm.artwork.artworkType}}</span>
+        </dd>
         <dt><span data-translate="ziranliserverApp.artwork.memo">Memo</span></dt>
         <dd>
             <span>{{vm.artwork.memo}}</span>
         </dd>
         <dt><span data-translate="ziranliserverApp.artwork.coverImage">Cover Image</span></dt>
         <dd>
-            <span class="thumbnail"><img ng-src="{{vm.artwork.coverImage}}" /></span>
+            <span class="thumbnail"><img ng-src="{{vm.artwork.coverImage}}"/></span>
         </dd>
         <dt><span data-translate="ziranliserverApp.artwork.status">Status</span></dt>
         <dd>
@@ -42,7 +53,7 @@
         </dd>
         <!--<dt><span data-translate="ziranliserverApp.artwork.qrCode">Qr Code</span></dt>-->
         <!--<dd>-->
-            <!--<span>{{vm.artwork.qrCode}}</span>-->
+        <!--<span>{{vm.artwork.qrCode}}</span>-->
         <!--</dd>-->
     </dl>
 

@@ -56,6 +56,18 @@ public class Artwork implements Serializable {
     @Column(name = "status")
     private String status;
 
+    @ApiModelProperty(value = "艺术品类型")
+    @Column(name = "artworkType")
+    private String artworkType;
+
+    @ApiModelProperty(value = "艺术品材质")
+    @Column(name = "material")
+    private String material;
+
+    @ApiModelProperty(value = "艺术品尺寸")
+    @Column(name = "size")
+    private String size;
+
     @ApiModelProperty(value = "艺术品标签")
     @Column(name = "tags")
     private String tags;
@@ -232,6 +244,30 @@ public class Artwork implements Serializable {
         this.images = artworkImages;
     }
 
+    public String getArtworkType() {
+        return artworkType;
+    }
+
+    public void setArtworkType(String artworkType) {
+        this.artworkType = artworkType;
+    }
+
+    public String getMaterial() {
+        return material;
+    }
+
+    public void setMaterial(String material) {
+        this.material = material;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -255,17 +291,21 @@ public class Artwork implements Serializable {
     @Override
     public String toString() {
         return "Artwork{" +
-            "id=" + getId() +
-            ", name='" + getName() + "'" +
-            ", year='" + getYear() + "'" +
-            ", author='" + getAuthor() + "'" +
-            ", amount='" + getAmount() + "'" +
-            ", price='" + getPrice() + "'" +
-            ", memo='" + getMemo() + "'" +
-            ", coverImage='" + getCoverImage() + "'" +
-            ", status='" + getStatus() + "'" +
-            ", tags='" + getTags() + "'" +
-            ", qrCode='" + getQrCode() + "'" +
-            "}";
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", year='" + year + '\'' +
+            ", author='" + author + '\'' +
+            ", amount=" + amount +
+            ", price=" + price +
+            ", memo='" + memo + '\'' +
+            ", coverImage='" + coverImage + '\'' +
+            ", status='" + status + '\'' +
+            ", artworkType='" + artworkType + '\'' +
+            ", material='" + material + '\'' +
+            ", size='" + size + '\'' +
+            ", tags='" + tags + '\'' +
+            ", qrCode='" + qrCode + '\'' +
+            ", images=" + images +
+            '}';
     }
 }
