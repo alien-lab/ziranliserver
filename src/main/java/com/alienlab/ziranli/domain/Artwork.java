@@ -57,7 +57,7 @@ public class Artwork implements Serializable {
     private String status;
 
     @ApiModelProperty(value = "艺术品类型")
-    @Column(name = "artworkType")
+    @Column(name = "artwork_type")
     private String artworkType;
 
     @ApiModelProperty(value = "艺术品材质")
@@ -247,7 +247,10 @@ public class Artwork implements Serializable {
     public String getArtworkType() {
         return artworkType;
     }
-
+    public Artwork artworkType(String artworkType) {
+        this.artworkType = artworkType;
+        return this;
+    }
     public void setArtworkType(String artworkType) {
         this.artworkType = artworkType;
     }

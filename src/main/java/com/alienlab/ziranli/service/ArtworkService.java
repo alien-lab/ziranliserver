@@ -21,29 +21,49 @@ public interface ArtworkService {
     Artwork save(Artwork artwork);
 
     /**
-     *  Get all the artworks.
+     * Get all the artworks.
      *
-     *  @param pageable the pagination information
-     *  @return the list of entities
+     * @param pageable the pagination information
+     * @return the list of entities
      */
     Page<Artwork> findAll(Pageable pageable);
 
     /**
-     *  Get the "id" artwork.
+     * Get the "id" artwork.
      *
-     *  @param id the id of the entity
-     *  @return the entity
+     * @param id the id of the entity
+     * @return the entity
      */
     Artwork findOne(Long id);
 
     /**
-     *  Delete the "id" artwork.
+     * Delete the "id" artwork.
      *
-     *  @param id the id of the entity
+     * @param id the id of the entity
      */
     void delete(Long id);
 
     List<ArtworkImage> loadImages(Long artwordId) throws Exception;
 
     List<Artwork> getAll();
+
+    List<String> getAllType();
+
+    List<String> getAllMaterial();
+
+    List<String> getAllSize();
+
+    List<Artwork> getByType(String type);
+
+    List<Artwork> getBySize(String size);
+
+    List<Artwork> getByMaterial(String material);
+
+    List<Artwork> getByTypeAndMaterial(String type, String material);
+
+    List<Artwork> getByTypeAndSize(String type, String size);
+
+    List<Artwork> getByMaterialAndSize(String material, String size);
+
+    List<Artwork> getByTypeAndMaterialAndSize(String type, String material, String size);
 }

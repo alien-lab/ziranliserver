@@ -20,7 +20,7 @@ import java.util.List;
  */
 @Service
 @Transactional
-public class ArtworkServiceImpl implements ArtworkService{
+public class ArtworkServiceImpl implements ArtworkService {
 
     private final Logger log = LoggerFactory.getLogger(ArtworkServiceImpl.class);
 
@@ -28,6 +28,7 @@ public class ArtworkServiceImpl implements ArtworkService{
 
     @Autowired
     ArtworkImageRepository artworkImageRepository;
+
     public ArtworkServiceImpl(ArtworkRepository artworkRepository) {
         this.artworkRepository = artworkRepository;
     }
@@ -46,10 +47,10 @@ public class ArtworkServiceImpl implements ArtworkService{
     }
 
     /**
-     *  Get all the artworks.
+     * Get all the artworks.
      *
-     *  @param pageable the pagination information
-     *  @return the list of entities
+     * @param pageable the pagination information
+     * @return the list of entities
      */
     @Override
     @Transactional(readOnly = true)
@@ -60,10 +61,10 @@ public class ArtworkServiceImpl implements ArtworkService{
     }
 
     /**
-     *  Get one artwork by id.
+     * Get one artwork by id.
      *
-     *  @param id the id of the entity
-     *  @return the entity
+     * @param id the id of the entity
+     * @return the entity
      */
     @Override
     @Transactional(readOnly = true)
@@ -74,9 +75,9 @@ public class ArtworkServiceImpl implements ArtworkService{
     }
 
     /**
-     *  Delete the  artwork by id.
+     * Delete the  artwork by id.
      *
-     *  @param id the id of the entity
+     * @param id the id of the entity
      */
     @Override
     public void delete(Long id) {
@@ -86,9 +87,9 @@ public class ArtworkServiceImpl implements ArtworkService{
 
     @Override
     public List<ArtworkImage> loadImages(Long artwordId) throws Exception {
-        Artwork artwork=artworkRepository.findOne(artwordId);
-        if(artwork==null){
-            throw new Exception("未找到编码为"+artwordId+"的艺术品");
+        Artwork artwork = artworkRepository.findOne(artwordId);
+        if (artwork == null) {
+            throw new Exception("未找到编码为" + artwordId + "的艺术品");
         }
 
         return artworkImageRepository.findArtworkImagesByArtwork(artwork);
@@ -98,4 +99,55 @@ public class ArtworkServiceImpl implements ArtworkService{
     public List<Artwork> getAll() {
         return artworkRepository.findAll();
     }
+
+    @Override
+    public List<String> getAllType() {
+        return artworkRepository.findAllType();
+    }
+
+    @Override
+    public List<String> getAllMaterial() {
+        return artworkRepository.findAllMaterial();
+    }
+
+    @Override
+    public List<String> getAllSize() {
+        return artworkRepository.findAllSize();
+    }
+
+    @Override
+    public List<Artwork> getByType(String type) {
+        return artworkRepository.findByArtworkType(type);
+    }
+
+    @Override
+    public List<Artwork> getBySize(String size) {
+        return artworkRepository.findBySize(size);
+    }
+
+    @Override
+    public List<Artwork> getByMaterial(String material) {
+        return artworkRepository.findByMaterial(material);
+    }
+
+    @Override
+    public List<Artwork> getByTypeAndMaterial(String type, String material) {
+        return artworkRepository.findByArtworkTypeAndMaterial(type, material);
+    }
+
+    @Override
+    public List<Artwork> getByTypeAndSize(String type, String size) {
+        return artworkRepository.findByArtworkTypeAndSize(type, size);
+    }
+
+    @Override
+    public List<Artwork> getByMaterialAndSize(String material, String size) {
+        return artworkRepository.findByMaterialAndSize(material, size);
+    }
+
+    @Override
+    public List<Artwork> getByTypeAndMaterialAndSize(String type, String material, String size) {
+        return artworkRepository.findByArtworkTypeAndMaterialAndSize(type, material, size);
+    }
+
 }

@@ -1,5 +1,7 @@
 package com.alienlab.ziranli.web.rest;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alienlab.ziranli.domain.ArtworkImage;
 import com.alienlab.ziranli.web.rest.util.ExecResult;
 import com.codahale.metrics.annotation.Timed;
@@ -150,6 +152,96 @@ public class ArtworkResource {
     public ResponseEntity<List<Artwork>> findAll() {
         log.debug("不分页获取所有艺术品 : {}");
         List<Artwork> artworks = artworkService.getAll();
+        return ResponseEntity.ok().body(artworks);
+    }
+
+    @ApiOperation("获取所有艺术品类别")
+    @GetMapping("/allTypes")
+    @Timed
+    public ResponseEntity<List<String>> findAllTypes() {
+        log.debug("获取所有艺术品类别 : {}");
+        List<String> types = artworkService.getAllType();
+        return ResponseEntity.ok().body(types);
+    }
+
+    @ApiOperation("获取所有艺术品材质")
+    @GetMapping("/allMaterials")
+    @Timed
+    public ResponseEntity<List<String>> findAllMaterials() {
+        log.debug("获取所有艺术品材质 : {}");
+        List<String> materials = artworkService.getAllMaterial();
+        return ResponseEntity.ok().body(materials);
+    }
+
+    @ApiOperation("获取所有艺术品尺寸")
+    @GetMapping("/allSizes")
+    @Timed
+    public ResponseEntity<List<String>> findAllSizes() {
+        log.debug("获取所有艺术品尺寸 : {}");
+        List<String> sizes = artworkService.getAllSize();
+        return ResponseEntity.ok().body(sizes);
+    }
+
+    @ApiOperation("根据类型获取艺术品")
+    @GetMapping("/byType/{type}")
+    @Timed
+    public ResponseEntity<List<Artwork>> findByType(@PathVariable String type) {
+        log.debug("根据类型获取艺术品 : {}");
+        List<Artwork> artworks = artworkService.getByType(type);
+        return ResponseEntity.ok().body(artworks);
+    }
+
+    @ApiOperation("根据尺寸获取艺术品")
+    @GetMapping("/bySize/{size}")
+    @Timed
+    public ResponseEntity<List<Artwork>> findBySize(@PathVariable String size) {
+        log.debug("根据尺寸获取艺术品 : {}");
+        List<Artwork> artworks = artworkService.getBySize(size);
+        return ResponseEntity.ok().body(artworks);
+    }
+
+    @ApiOperation("根据材质获取艺术品")
+    @GetMapping("/byMaterial/{material}")
+    @Timed
+    public ResponseEntity<List<Artwork>> findByMaterial(@PathVariable String material) {
+        log.debug("根据材质获取艺术品 : {}");
+        List<Artwork> artworks = artworkService.getByMaterial(material);
+        return ResponseEntity.ok().body(artworks);
+    }
+
+    @ApiOperation("根据类别和材质获取艺术品")
+    @GetMapping("/byTypeAndMaterial/{type}-{material}")
+    @Timed
+    public ResponseEntity<List<Artwork>> findByTypeAndMaterial(@PathVariable String type, @PathVariable String material) {
+        log.debug("根据类别和材质获取艺术品 : {}");
+        List<Artwork> artworks = artworkService.getByTypeAndMaterial(type, material);
+        return ResponseEntity.ok().body(artworks);
+    }
+
+    @ApiOperation("根据类别和尺寸获取艺术品")
+    @GetMapping("/byTypeAndSize/{type}-{size}")
+    @Timed
+    public ResponseEntity<List<Artwork>> findByTypeAndSize(@PathVariable String type, @PathVariable String size) {
+        log.debug("根据类别和尺寸获取艺术品 : {}");
+        List<Artwork> artworks = artworkService.getByTypeAndSize(type, size);
+        return ResponseEntity.ok().body(artworks);
+    }
+
+    @ApiOperation("根据材质和尺寸获取艺术品")
+    @GetMapping("/byMaterialAndSize/{material}-{size}")
+    @Timed
+    public ResponseEntity<List<Artwork>> findByMaterialAndSize(@PathVariable String material, @PathVariable String size) {
+        log.debug("根据材质和尺寸获取艺术品 : {}");
+        List<Artwork> artworks = artworkService.getByMaterialAndSize(material, size);
+        return ResponseEntity.ok().body(artworks);
+    }
+
+    @ApiOperation("根据类别、材质和尺寸获取艺术品")
+    @GetMapping("/byTypeAndMaterialAndSize/{type}-{material}-{size}")
+    @Timed
+    public ResponseEntity<List<Artwork>> findByTypeAndMaterialAndSize(@PathVariable String type, @PathVariable String material, @PathVariable String size) {
+        log.debug("根据类别、材质和尺寸获取艺术品 : {}");
+        List<Artwork> artworks = artworkService.getByTypeAndMaterialAndSize(type, material, size);
         return ResponseEntity.ok().body(artworks);
     }
 }
