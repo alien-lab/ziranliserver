@@ -1,5 +1,7 @@
 package com.alienlab.ziranli.service.impl;
 
+import com.alienlab.ziranli.domain.CourseImage;
+import com.alienlab.ziranli.repository.CourseImageRepository;
 import com.alienlab.ziranli.service.CourseService;
 import com.alienlab.ziranli.domain.Course;
 import com.alienlab.ziranli.repository.CourseRepository;
@@ -28,6 +30,9 @@ public class CourseServiceImpl implements CourseService{
     private final Logger log = LoggerFactory.getLogger(CourseServiceImpl.class);
 
     private final CourseRepository courseRepository;
+
+    @Autowired
+    private CourseImageRepository courseImageRepository;
 
     @Autowired
     JdbcTemplate jdbcTemplate;
@@ -125,5 +130,15 @@ public class CourseServiceImpl implements CourseService{
             e.printStackTrace();
             return false;
         }
+    }
+
+    @Override
+    public List<CourseImage> loadImages(Long courseId) throws Exception {
+        Course course = courseRepository.findOne(courseId);
+        if (course == null) {
+            throw new Exception("未找到编码为" + courseId + "的课程");
+        }
+
+        return courseImageRepository.findCourseImagesByCourse(course);
     }
 }

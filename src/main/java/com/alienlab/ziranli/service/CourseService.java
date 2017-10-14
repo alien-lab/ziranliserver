@@ -1,6 +1,7 @@
 package com.alienlab.ziranli.service;
 
 import com.alienlab.ziranli.domain.Course;
+import com.alienlab.ziranli.domain.CourseImage;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -47,5 +48,7 @@ public interface CourseService {
     Map getCourseOnlive(Long courseId);
     boolean delCourseOnlive(Long courseId,String onliveId);
     boolean addCourseOnlive(Long courseId,String onliveId);
+
+    List<CourseImage> loadImages(Long courseId) throws Exception;
 
 }

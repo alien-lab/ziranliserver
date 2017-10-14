@@ -20,7 +20,7 @@ import java.util.List;
 public class ArtworkImageServiceImpl implements ArtworkImageService{
 
     private final Logger log = LoggerFactory.getLogger(ArtworkImageServiceImpl.class);
-    
+
     private final ArtworkImageRepository artworkImageRepository;
 
     public ArtworkImageServiceImpl(ArtworkImageRepository artworkImageRepository) {
@@ -42,7 +42,7 @@ public class ArtworkImageServiceImpl implements ArtworkImageService{
 
     /**
      *  Get all the artworkImages.
-     *  
+     *
      *  @param pageable the pagination information
      *  @return the list of entities
      */

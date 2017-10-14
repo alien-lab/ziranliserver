@@ -22,7 +22,8 @@
                     return data;
                 }
             },
-            'update': { method:'PUT' }
+            'update': { method:'PUT' },
+            'loadImages':{method:'GET',url:'api/course/images/:id',isArray: true}
         });
     }
 })();

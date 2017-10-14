@@ -3,12 +3,15 @@ package com.alienlab.ziranli.web.rest;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.util.TypeUtils;
+import com.alienlab.ziranli.domain.ArtworkImage;
+import com.alienlab.ziranli.domain.CourseImage;
 import com.alienlab.ziranli.web.rest.util.ExecResult;
 import com.codahale.metrics.annotation.Timed;
 import com.alienlab.ziranli.domain.Course;
 import com.alienlab.ziranli.service.CourseService;
 import com.alienlab.ziranli.web.rest.util.HeaderUtil;
 import com.alienlab.ziranli.web.rest.util.PaginationUtil;
+import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
@@ -131,6 +134,23 @@ public class CourseResource {
         log.debug("REST request to delete Course : {}", id);
         courseService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+    }
+
+    @ApiOperation("获取课程的对应的图册")
+    @GetMapping("/course/images/{id}")
+    @Timed
+    public ResponseEntity loadCourseImages(@PathVariable Long id) {
+        System.out.println("1111111");
+        System.out.println(id);
+        log.debug("load course images : {}", id);
+        try {
+            List<CourseImage> images = courseService.loadImages(id);
+            return ResponseEntity.ok().body(images);
+        } catch (Exception e) {
+            e.printStackTrace();
+            ExecResult er = new ExecResult(false, e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(er);
+        }
     }
 
     @GetMapping("/courses/onlive")
